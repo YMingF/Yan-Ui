@@ -2,7 +2,7 @@
     <div>
       <TopNav/>
       <div class="content">
-        <aside>
+        <aside v-if="menuVisible">
           <h2>组件列表</h2>
           <ol>
             <li>
@@ -27,8 +27,13 @@
 
 <script lang="ts">
   import TopNav from "../components/TopNav.vue";
+  import {inject, Ref} from 'vue';
   export default {
-    components: {TopNav}
+    components: {TopNav},
+    setup(){
+      const menuVisible=inject<Ref<boolean>>('menuVisible') //<>就是在标记类型
+      return {menuVisible} //无论是变量还是函数，都需要返回，才能够被外部的template用到
+    }
   }
 </script>
 

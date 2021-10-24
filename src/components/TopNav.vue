@@ -1,6 +1,6 @@
 <template>
   <div class="topNav">
-    <div class="logo">LOGO</div>
+    <div class="logo" @click="toggleMenu">LOGO</div>
     <ul class="menu">
       <li>菜单1</li>
       <li>菜单2</li>
@@ -8,7 +8,19 @@
   </div>
 
 </template>
-<script lang="ts"></script>
+<script lang="ts">
+import {inject, Ref} from 'vue';
+
+export default {
+  setup(){
+    const menuVisible=inject<Ref<boolean>>('menuVisible') //<>就是在标记类型
+    const toggleMenu=()=>{
+      menuVisible.value=!menuVisible.value
+    }
+    return {toggleMenu} //只有return之后，外部的template才能获取到这个函数
+  }
+}
+</script>
 <style lang="scss" scoped>
 .topNav{
   background: cornflowerblue;
