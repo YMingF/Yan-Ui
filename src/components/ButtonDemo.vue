@@ -1,9 +1,16 @@
 <template>
+  <h1>theme示例</h1>
   <div>
     <Button>牛皮</Button>
     <Button theme="button">牛皮</Button>
     <Button theme="link">牛皮</Button>
     <Button theme="text">牛皮</Button>
+  </div>
+  <h1>size示例</h1>
+  <div>
+    <Button size="big">大大大</Button>
+    <Button>普普通</Button>
+    <Button size="small">小小小</Button>
   </div>
 </template>
 <script lang="ts">
