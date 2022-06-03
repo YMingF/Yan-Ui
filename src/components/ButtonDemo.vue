@@ -1,6 +1,9 @@
 <template>
   <div>
-    <Button @click="onClick" @focus="onClick" @mouseover="onClick" size="small">牛皮</Button>
+    <Button>牛皮</Button>
+    <Button theme="button">牛皮</Button>
+    <Button theme="link">牛皮</Button>
+    <Button theme="text">牛皮</Button>
   </div>
 </template>
 <script lang="ts">
