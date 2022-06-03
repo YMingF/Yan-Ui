@@ -2,17 +2,17 @@
   <!--  visible来控制dialog对话框是否展示-->
   <template v-if="visible">
     <!--  遮罩层-->
-    <div class="gulu-dialog-overlay"></div>
+    <div class="gulu-dialog-overlay" @click="clickOverlay"></div>
     <div class="gulu-dialog-wrapper">
       <div class="gulu-dialog">
-        <header>标题</header>
+        <header>标题 <span @click="close" class="gulu-dialog-close"></span></header>
         <main>
           主要内容
         </main>
         <!--    按钮-->
         <footer>
-          <Button level="main">OK</Button>
-          <Button>Cancel</Button>
+          <Button level="main" @click="ok">OK</Button>
+          <Button @click="cancel">Cancel</Button>
         </footer>
       </div>
     </div>
@@ -25,8 +25,33 @@ import Button from './Button.vue';
 export default {
   props: {
     visible: {type: Boolean, default: false},
+    closeOnClickOverlay: {type: Boolean, default: false}, // 表是否可通过点击遮罩层关闭dialog
+    ok: {type: Function},
+    cancel: {type: Function},
   },
   components: {Button},
+  setup(props, context) {
+    const close = () => {
+      context.emit('update:visible', false);
+    };
+    const clickOverlay = () => {
+      console.log(props.closeOnClickOverlay);
+      // 当你设置了可以通过点击遮罩层关闭的时候，才调用close函数关闭dialog
+      if (props.closeOnClickOverlay) {
+        close();
+      }
+    };
+    const ok = () => {
+      // 这样写的目的是为了面对以后有校验时，只有当校验返回结果不为false 的时候，才关闭dialog
+      if (props.ok?.() !== false) {
+        close();
+      }
+    };
+    const cancel = () => {
+      close();
+    };
+    return {close, clickOverlay, ok, cancel};
+  },
 };
 </script>
 
