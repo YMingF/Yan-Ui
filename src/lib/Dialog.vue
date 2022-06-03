@@ -5,9 +5,12 @@
     <div class="gulu-dialog-overlay" @click="clickOverlay"></div>
     <div class="gulu-dialog-wrapper">
       <div class="gulu-dialog">
-        <header>标题 <span @click="close" class="gulu-dialog-close"></span></header>
+        <header>
+          {{ title }}
+          <span @click="close" class="gulu-dialog-close"></span></header>
+        <!--  dialog主要内容-->
         <main>
-          主要内容
+          <slot/>
         </main>
         <!--    按钮-->
         <footer>
@@ -25,6 +28,7 @@ import Button from './Button.vue';
 export default {
   props: {
     visible: {type: Boolean, default: false},
+    title: {type: String, default: '提示'},
     closeOnClickOverlay: {type: Boolean, default: false}, // 表是否可通过点击遮罩层关闭dialog
     ok: {type: Function},
     cancel: {type: Function},

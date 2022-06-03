@@ -2,6 +2,7 @@
   <div>
     <Button @click="toggle">toggle</Button>
     <Dialog v-model:visible="x" :closeOnClickOverlay="true" :ok="f1" :cancel="f2">
+      <div>h1</div>
     </Dialog>
   </div>
 </template>
