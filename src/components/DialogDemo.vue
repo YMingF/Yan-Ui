@@ -2,7 +2,15 @@
   <div>
     <Button @click="toggle">toggle</Button>
     <Dialog v-model:visible="x" :closeOnClickOverlay="true" :ok="f1" :cancel="f2">
-      <div>h1</div>
+      <!--      内容-->
+      <template v-slot:content>
+        <strong>hi</strong>
+        <div>hi2</div>
+      </template>
+      <!--      标题-->
+      <template v-slot:title>
+        <strong>加粗标题</strong>
+      </template>
     </Dialog>
   </div>
 </template>
