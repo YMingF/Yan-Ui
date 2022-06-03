@@ -1,24 +1,26 @@
 <template>
   <!--  visible来控制dialog对话框是否展示-->
   <template v-if="visible">
-    <!--  遮罩层-->
-    <div class="gulu-dialog-overlay" @click="clickOverlay"></div>
-    <div class="gulu-dialog-wrapper">
-      <div class="gulu-dialog">
-        <header>
-          <slot name="title"/>
-          <span @click="close" class="gulu-dialog-close"></span></header>
-        <!--  dialog主要内容-->
-        <main>
-          <slot name="content"/>
-        </main>
-        <!--    按钮-->
-        <footer>
-          <Button level="main" @click="ok">OK</Button>
-          <Button @click="cancel">Cancel</Button>
-        </footer>
+    <Teleport to="body">
+      <!--  遮罩层-->
+      <div class="gulu-dialog-overlay" @click="clickOverlay"></div>
+      <div class="gulu-dialog-wrapper">
+        <div class="gulu-dialog">
+          <header>
+            <slot name="title"/>
+            <span @click="close" class="gulu-dialog-close"></span></header>
+          <!--  dialog主要内容-->
+          <main>
+            <slot name="content"/>
+          </main>
+          <!--    按钮-->
+          <footer>
+            <Button level="main" @click="ok">OK</Button>
+            <Button @click="cancel">Cancel</Button>
+          </footer>
+        </div>
       </div>
-    </div>
+    </Teleport>
   </template>
 </template>
 
