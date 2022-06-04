@@ -7,15 +7,14 @@
       <div class="gulu-tabs-nav-indicator" ref="indicator"></div>
     </div>
     <div class="gulu-tabs-content">
-      <component class="gulu-tabs-content-item" :class="{selected: c.props.title === selected }" v-for="c in defaults"
-                 :is="c"/>
+      <component :is="currentSelected" :key="currentSelected.props.title"/>
     </div>
   </div>
 </template>
 
 <script lang='ts'>
 import Tab from './Tab.vue';
-import {onMounted, ref, watchEffect} from 'vue';
+import {computed, onMounted, ref, watchEffect} from 'vue';
 
 export default {
   props: {
@@ -47,11 +46,15 @@ export default {
     const titles = defaults.map(tag => {
       return tag.props.title;
     });
+    // 获取当前选中项
+    const currentSelected = computed(() => {
+      return defaults.find(tag => tag.props.title === props.selected);
+    });
     // 调整当前tab选中项
     const select = (title) => {
       context.emit('update:selected', title);
     };
-    return {defaults, titles, select, selectedItem, indicator, container};
+    return {defaults, titles, select, selectedItem, indicator, container, currentSelected};
   },
 };
 </script>
@@ -95,13 +98,6 @@ $border-color: #d9d9d9;
   &-content {
     padding: 8px 0;
 
-    &-item { // gulu-tabs-content-item
-      display: none;
-
-      &.selected {
-        display: block;
-      }
-    }
   }
 }
 </style>
