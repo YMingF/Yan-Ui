@@ -5,7 +5,7 @@
            :class="{'selected':selected===t}"
            v-for="(t,index) in titles" :key="index"
            @click="select(t)"
-           :ref="el=>{if (el) navItems[index]=el}"
+           :ref="el=>{if (t===selected) selectedItem=el}"
       >
         {{ t }}
       </div>
@@ -27,17 +27,15 @@ export default {
     selected: {type: String},
   },
   setup: function (props, context) {
-    const navItems = ref<HTMLDivElement[]>([]);
+    const selectedItem = ref<HTMLDivElement>(null);
     const indicator = ref<HTMLDivElement>(null);
     const container = ref<HTMLDivElement>(null);
     const x = () => {
-      const divs = navItems.value;
-      const result = divs.find(div => div.classList.contains('selected'));
-      const {width} = result.getBoundingClientRect();
+      const {width} = selectedItem.value.getBoundingClientRect();
       indicator.value.style.width = width + 'px';
       // 计算选中项和导航盒子左边距的差值
       const {left: containerLeft} = container.value.getBoundingClientRect();
-      const {left: selectedItemLeft} = result.getBoundingClientRect();
+      const {left: selectedItemLeft} = selectedItem.value.getBoundingClientRect();
       // 将差值作为横线的左边距，就能让横线正好在当前选中项下方了。
       const left = selectedItemLeft - containerLeft;
       indicator.value.style.left = left + 'px';
@@ -57,7 +55,7 @@ export default {
     const select = (title) => {
       context.emit('update:selected', title);
     };
-    return {defaults, titles, select, navItems, indicator, container};
+    return {defaults, titles, select, selectedItem, indicator, container};
   },
 };
 </script>
