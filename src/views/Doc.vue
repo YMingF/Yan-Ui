@@ -52,51 +52,88 @@
 </script>
 
 <style lang="scss" scoped>
-  .layout {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    > .nav {
-      flex-shrink: 0;
-    }
-    > .content {
-      flex-grow: 1;
-      padding-top: 60px;
-      padding-left: 156px;
-      @media (max-width: 500px) {
-        padding-left: 0;
-      }
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  > .nav {
+    flex-shrink: 0;
+  }
+
+  > .content {
+    flex-grow: 1;
+    padding-top: 60px;
+    padding-left: 156px;
+    @media (max-width: 500px) {
+      padding-left: 0;
     }
   }
-  .content {
-    display: flex;
-    > aside {
-      flex-shrink: 0;
-    }
-    > main {
-      flex-grow: 1;
-      padding: 16px;
-    }
+}
+
+.content {
+  display: flex;
+
+  > aside {
+    flex-shrink: 0;
   }
-  aside {
-    background: lightblue;
-    width: 150px;
+
+  > main {
+    flex-grow: 1;
     padding: 16px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding-top: 70px;
-    height: 100%;
-    > h2 {
-      margin-bottom: 4px;
-    }
-    > ol {
-      > li {
-        padding: 4px 0;
+  }
+}
+
+aside {
+  background: #fff;
+  width: 150px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 70px;
+  height: 100%;
+
+  > h2 {
+    margin-bottom: 4px;
+    padding: 0 16px;
+  }
+
+  > ol {
+    > li {
+      position: relative;
+
+      > a {
+        padding: 4px 16px;
+        display: block;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline green 2px;
+        }
+
+        &.router-link-active {
+          color: green;
+          background: linear-gradient(145deg, rgba(227, 255, 253, 1) 0%, rgba(183, 233, 230, 1) 100%);
+
+        }
+
+        &.router-link-active:after {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: 0;
+          height: 100%;
+          border-right: 3px solid green;
+          transition: all 250ms;
+
+        }
       }
-    }
-    main {
-      overflow: auto;
+
     }
   }
+
+  main {
+    overflow: auto;
+  }
+}
 </style>

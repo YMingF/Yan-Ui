@@ -46,6 +46,7 @@ $wordColor: #007974;
   z-index: 10;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 2px 8px #f0f1f2;
 
   > .logo {
     max-width: 6em;
@@ -56,6 +57,7 @@ $wordColor: #007974;
       height: 32px;
     }
   }
+
   > .menu {
     display: flex;
     white-space: nowrap;
