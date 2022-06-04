@@ -7,31 +7,18 @@
 </template>
 
 <script lang="ts">
-import Switch from '../lib/Switch.vue';
 import Switch1Demo from './Switch1.demo.vue';
 import Switch2Demo from './Switch2.demo.vue';
-import Button from '../lib/Button.vue';
 import Demo from '../components/Demo.vue';
-import 'prismjs';// 适应这个库的写法
-const Prism = (window as any).Prism;
-
-import {
-  ref,
-} from 'vue';
 
 export default {
   components: {
-    Switch,
-    Button,
     Demo,
   },
   setup() {
-    const bool = ref(false);
     return {
-      bool,
       Switch1Demo,
       Switch2Demo,
-      Prism,
     }
   }
 }
@@ -65,9 +52,4 @@ $border-color: #d9d9d9;
     }
   }
 }
-</style>
-<style lang="scss">
-// 无法在js里导入这个css，只能这样导
-@import 'prismjs/themes/prism.css';
-
 </style>
