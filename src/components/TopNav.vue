@@ -24,7 +24,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .topNav{
-  background: cornflowerblue;
   display: flex;
   padding: 16px;
   position: fixed;
