@@ -1,6 +1,6 @@
 <template>
   <div class="gulu-tabs">
-    <div class="gulu-tabs-nav">
+    <div class="gulu-tabs-nav" ref="container">
       <div class="gulu-tabs-nav-item"
            :class="{'selected':selected===t}"
            v-for="(t,index) in titles" :key="index"
@@ -20,21 +20,30 @@
 
 <script lang='ts'>
 import Tab from './Tab.vue';
-import {onMounted, ref} from 'vue';
+import {onMounted, ref, onUpdated} from 'vue';
 
 export default {
   props: {
     selected: {type: String},
   },
-  setup(props, context) {
+  setup: function (props, context) {
     const navItems = ref<HTMLDivElement[]>([]);
     const indicator = ref<HTMLDivElement>(null);
-    onMounted(() => {
+    const container = ref<HTMLDivElement>(null);
+    const x = () => {
       const divs = navItems.value;
       const result = divs.find(div => div.classList.contains('selected'));
       const {width} = result.getBoundingClientRect();
       indicator.value.style.width = width + 'px';
-    });
+      // 计算选中项和导航盒子左边距的差值
+      const {left: containerLeft} = container.value.getBoundingClientRect();
+      const {left: selectedItemLeft} = result.getBoundingClientRect();
+      // 将差值作为横线的左边距，就能让横线正好在当前选中项下方了。
+      const left = selectedItemLeft - containerLeft;
+      indicator.value.style.left = left + 'px';
+    };
+    onMounted(x);
+    onUpdated(x);
     const defaults = context.slots.default();
     defaults.forEach(tag => {
       if (tag.type !== Tab) {
@@ -48,7 +57,7 @@ export default {
     const select = (title) => {
       context.emit('update:selected', title);
     };
-    return {defaults, titles, select, navItems, indicator};
+    return {defaults, titles, select, navItems, indicator, container};
   },
 };
 </script>
@@ -85,6 +94,7 @@ $border-color: #d9d9d9;
       left: 0;
       bottom: -1px;
       width: 100px;
+      transition: all 250ms;
     }
   }
 
