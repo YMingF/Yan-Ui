@@ -2,7 +2,7 @@
   <div class="topNavAndBanner">
     <TopNav/>
     <div class="banner">
-      <h1>Yan-Ui</h1>
+      <h1>Z-UI</h1>
       <h2>一个牛皮的框架</h2>
       <p class="actions">
         <a href="https://github.com/YMingF/Yan-Ui">GitHUb</a>
@@ -22,11 +22,15 @@ export default {
 
 
 <style lang='scss' scoped>
+$green: #02bcb0;
+$border-radius: 4px;
+$wordColor: #007974;
 .topNavAndBanner {
   background: linear-gradient(145deg, rgba(227, 255, 253, 1) 0%, rgba(183, 233, 230, 1) 100%);
 }
 
 .banner {
+  color: $wordColor;
   padding: 100px 0;
   display: flex;
   justify-content: center;
@@ -38,13 +42,15 @@ export default {
 
     a {
       margin: 0 8px;
-      background: #fff;
+      background: $green;
+      color: white;
       display: inline-block;
-      $h: 28px;
-      height: $h;
-      line-height: $h;
-      border-radius: $h/2;
-      padding: 0 8px;
+      padding: 8px 24px;
+      border-radius: $border-radius;
+
+      &:hover {
+        text-decoration: none;
+      }
     }
   }
   }
