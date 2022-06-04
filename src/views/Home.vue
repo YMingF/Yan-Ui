@@ -1,13 +1,29 @@
 <template>
-  <div class="topNavAndBanner">
-    <TopNav/>
-    <div class="banner">
-      <h1>Z-UI</h1>
-      <h2>一个牛皮的框架</h2>
-      <p class="actions">
-        <a href="https://github.com/YMingF/Yan-Ui">GitHUb</a>
-        <router-link to="/doc">开始</router-link>
-      </p>
+  <div>
+    <div class="topNavAndBanner">
+      <TopNav/>
+      <div class="banner">
+        <h1>Z-UI</h1>
+        <h2>一个牛皮的框架</h2>
+        <p class="actions">
+          <a href="https://github.com/YMingF/Yan-Ui">GitHUb</a>
+          <router-link to="/doc">开始</router-link>
+        </p>
+      </div>
+    </div>
+    <div class="features">
+      <!--    vue-->
+      <svg class="icon">
+        <use xlink:href="#icon-vue"></use>
+      </svg>
+      <!--    ts-->
+      <svg class="icon">
+        <use xlink:href="#icon-ts"></use>
+      </svg>
+      <!--    lights-->
+      <svg class="icon">
+        <use xlink:href="#icon-lights"></use>
+      </svg>
     </div>
   </div>
 </template>
@@ -53,5 +69,12 @@ $wordColor: #007974;
       }
     }
   }
+}
+
+.features {
+  > svg {
+    width: 64px;
+    height: 64px;
   }
+}
 </style>
