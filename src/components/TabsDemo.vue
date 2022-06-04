@@ -17,7 +17,7 @@ import {ref} from 'vue';
 export default {
   components: {Tabs, Tab},
   setup() {
-    const x = ref('导航2222');
+    const x = ref('导航1');
     return {x};
   },
 };

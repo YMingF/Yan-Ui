@@ -1,47 +1,42 @@
 <template>
   <div class="gulu-tabs">
     <div class="gulu-tabs-nav" ref="container">
-      <div class="gulu-tabs-nav-item"
-           :class="{'selected':selected===t}"
-           v-for="(t,index) in titles" :key="index"
-           @click="select(t)"
-           :ref="el=>{if (t===selected) selectedItem=el}"
-      >
-        {{ t }}
+      <div class="gulu-tabs-nav-item" v-for="(t,index) in titles" :ref="el => { if (t===selected) selectedItem = el }"
+           @click="select(t)" :class="{selected: t=== selected}" :key="index">{{ t }}
       </div>
       <div class="gulu-tabs-nav-indicator" ref="indicator"></div>
     </div>
     <div class="gulu-tabs-content">
-      <component class="gulu-tabs-content-item" v-for="(c,index) in defaults" :is="c" :key="index"
-                 :class="{selected:c.props.title===selected}"/>
+      <component class="gulu-tabs-content-item" :class="{selected: c.props.title === selected }" v-for="c in defaults"
+                 :is="c"/>
     </div>
   </div>
 </template>
 
 <script lang='ts'>
 import Tab from './Tab.vue';
-import {onMounted, ref, onUpdated} from 'vue';
+import {ref, watchEffect} from 'vue';
 
 export default {
   props: {
     selected: {type: String},
   },
-  setup: function (props, context) {
+  setup(props, context) {
     const selectedItem = ref<HTMLDivElement>(null);
     const indicator = ref<HTMLDivElement>(null);
     const container = ref<HTMLDivElement>(null);
-    const x = () => {
-      const {width} = selectedItem.value.getBoundingClientRect();
-      indicator.value.style.width = width + 'px';
-      // 计算选中项和导航盒子左边距的差值
-      const {left: containerLeft} = container.value.getBoundingClientRect();
-      const {left: selectedItemLeft} = selectedItem.value.getBoundingClientRect();
-      // 将差值作为横线的左边距，就能让横线正好在当前选中项下方了。
-      const left = selectedItemLeft - containerLeft;
-      indicator.value.style.left = left + 'px';
-    };
-    onMounted(x);
-    onUpdated(x);
+    watchEffect(() => {
+      if (selectedItem.value !== null && indicator.value !== null && container.value !== null) {
+        const {width} = selectedItem.value.getBoundingClientRect();
+        indicator.value.style.width = width + 'px';
+        // 计算选中项和导航盒子左边距的差值
+        const {left: containerLeft} = container.value.getBoundingClientRect();
+        const {left: selectedItemLeft} = selectedItem.value.getBoundingClientRect();
+        // 将差值作为横线的左边距，就能让横线正好在当前选中项下方了。
+        const left = selectedItemLeft - containerLeft;
+        indicator.value.style.left = left + 'px';
+      }
+    });
     const defaults = context.slots.default();
     defaults.forEach(tag => {
       if (tag.type !== Tab) {
