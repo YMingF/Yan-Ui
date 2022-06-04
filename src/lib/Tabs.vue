@@ -4,9 +4,12 @@
       <div class="gulu-tabs-nav-item"
            :class="{'selected':selected===t}"
            v-for="(t,index) in titles" :key="index"
-           @click="select(t)">
+           @click="select(t)"
+           :ref="el=>{if (el) navItems[index]=el}"
+      >
         {{ t }}
       </div>
+      <div class="gulu-tabs-nav-indicator" ref="indicator"></div>
     </div>
     <div class="gulu-tabs-content">
       <component class="gulu-tabs-content-item" v-for="(c,index) in defaults" :is="c" :key="index"
@@ -17,12 +20,21 @@
 
 <script lang='ts'>
 import Tab from './Tab.vue';
+import {onMounted, ref} from 'vue';
 
 export default {
   props: {
     selected: {type: String},
   },
   setup(props, context) {
+    const navItems = ref<HTMLDivElement[]>([]);
+    const indicator = ref<HTMLDivElement>(null);
+    onMounted(() => {
+      const divs = navItems.value;
+      const result = divs.find(div => div.classList.contains('selected'));
+      const {width} = result.getBoundingClientRect();
+      indicator.value.style.width = width + 'px';
+    });
     const defaults = context.slots.default();
     defaults.forEach(tag => {
       if (tag.type !== Tab) {
@@ -36,7 +48,7 @@ export default {
     const select = (title) => {
       context.emit('update:selected', title);
     };
-    return {defaults, titles, select};
+    return {defaults, titles, select, navItems, indicator};
   },
 };
 </script>
@@ -50,6 +62,7 @@ $border-color: #d9d9d9;
     display: flex;
     color: $color;
     border-bottom: 1px solid $border-color;
+    position: relative;
 
     &-item {
       padding: 8px 0;
@@ -63,6 +76,15 @@ $border-color: #d9d9d9;
       &.selected {
         color: $blue;
       }
+    }
+
+    &-indicator {
+      position: absolute;
+      height: 3px;
+      background: $blue;
+      left: 0;
+      bottom: -1px;
+      width: 100px;
     }
   }
 
