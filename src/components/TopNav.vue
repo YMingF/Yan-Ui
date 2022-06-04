@@ -1,18 +1,19 @@
 <template>
   <div class="topNav">
-    <div class="logo">
+    <router-link to="/" class="logo">
       <svg class="icon">
         <use xlink:href="#icon-banner"></use>
       </svg>
-      ZUI
-    </div>
+    </router-link>
 
     <ul class="menu">
       <li>
         <router-link to="/doc">文档</router-link>
       </li>
     </ul>
-    <span class="toggleAside" @click="toggleMenu"> </span>
+    <svg v-if="toggleMenuButtonVisible" class="toggleAside" @click="toggleMenu">
+      <use xlink:href="#icon-menu"></use>
+    </svg>
 
   </div>
 </template>
@@ -20,13 +21,16 @@
 import {inject, Ref} from 'vue';
 
 export default {
-  setup(){
-    const menuVisible=inject<Ref<boolean>>('menuVisible') //<>就是在标记类型
-    const toggleMenu=()=>{
-      menuVisible.value=!menuVisible.value
-    }
-    return {toggleMenu} //只有return之后，外部的template才能获取到这个函数
-  }
+  props: {
+    toggleMenuButtonVisible: {type: Boolean, default: false},
+  },
+  setup() {
+    const menuVisible = inject<Ref<boolean>>('menuVisible'); //<>就是在标记类型
+    const toggleMenu = () => {
+      menuVisible.value = !menuVisible.value;
+    };
+    return {toggleMenu}; //只有return之后，外部的template才能获取到这个函数
+  },
 }
 </script>
 <style lang="scss" scoped>
@@ -63,7 +67,6 @@ $wordColor: #007974;
   > .toggleAside {
     width: 24px;
     height: 24px;
-    background: red;
     position: absolute;
     left: 16px;
     top: 50%;
