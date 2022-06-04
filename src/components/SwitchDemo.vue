@@ -10,7 +10,9 @@
         <Button>查看代码</Button>
       </div>
       <div class="demo-code">
-        <pre>{{ Switch1Demo.__sourceCode }}</pre>
+        <pre class="language-html"
+             v-html="Prism.highlight(Switch1Demo.__sourceCode, Prism.languages.javascript, 'javascript')"></pre>
+
       </div>
     </div>
     <!--    例子2-->
@@ -23,7 +25,8 @@
         <Button>查看代码</Button>
       </div>
       <div class="demo-code">
-        <pre>{{ Switch2Demo.__sourceCode }}</pre>
+        <pre class="language-html"
+             v-html="Prism.highlight(Switch2Demo.__sourceCode, Prism.languages.javascript, 'javascript')"></pre>
       </div>
     </div>
   </div>
@@ -34,6 +37,9 @@ import Switch from '../lib/Switch.vue';
 import Switch1Demo from './Switch1.demo.vue';
 import Switch2Demo from './Switch2.demo.vue';
 import Button from '../lib/Button.vue';
+import 'prismjs';// 适应这个库的写法
+const Prism = (window as any).Prism;
+
 import {
   ref,
 } from 'vue';
@@ -49,6 +55,7 @@ export default {
       bool,
       Switch1Demo,
       Switch2Demo,
+      Prism,
     }
   }
 }
@@ -74,11 +81,17 @@ $border-color: #d9d9d9;
   &-code {
     padding: 8px 16px;
     border-top: 1px dashed $border-color;
-    >pre {
+
+    > pre {
       line-height: 1.1;
       font-family: Consolas, 'Courier New', Courier, monospace;
       margin: 0;
     }
   }
 }
+</style>
+<style lang="scss">
+// 无法在js里导入这个css，只能这样导
+@import 'prismjs/themes/prism.css';
+
 </style>
