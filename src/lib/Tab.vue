@@ -1,5 +1,7 @@
 <template>
-  Tab组件
+  <div>
+    <slot/>
+  </div>
 
 </template>
 
