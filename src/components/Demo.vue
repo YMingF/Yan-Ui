@@ -1,40 +1,36 @@
 <template>
-  <div>
-    <h1>Switch 组件示例 </h1>
-    <Demo :component="Switch1Demo"/>
-    <Demo :component="Switch2Demo"/>
+  <div class="demo">
+    <!--    vite.config.ts里有写__sourceCodeTitle的定义，就是你在组件里些的demo标签里的内容-->
+    <h2>{{ component.__sourceCodeTitle }} </h2>
+    <div class="demo-component">
+      <component :is="component"></component>
+    </div>
+    <div class="demo-actions">
+      <Button>查看代码</Button>
+    </div>
+    <div class="demo-code">
+        <pre class="language-html"
+             v-html="Prism.highlight(component.__sourceCode, Prism.languages.javascript, 'javascript')"></pre>
+    </div>
   </div>
 </template>
 
-<script lang="ts">
-import Switch from '../lib/Switch.vue';
-import Switch1Demo from './Switch1.demo.vue';
-import Switch2Demo from './Switch2.demo.vue';
+<script lang='ts'>
 import Button from '../lib/Button.vue';
-import Demo from '../components/Demo.vue';
-import 'prismjs';// 适应这个库的写法
+import 'prismjs';
+// 适应这个库的写法
 const Prism = (window as any).Prism;
-
-import {
-  ref,
-} from 'vue';
-
 export default {
+  props: {
+    component: Object,
+  },
   components: {
-    Switch,
     Button,
-    Demo,
   },
   setup() {
-    const bool = ref(false);
-    return {
-      bool,
-      Switch1Demo,
-      Switch2Demo,
-      Prism,
-    }
-  }
-}
+    return {Prism};
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -42,18 +38,22 @@ $border-color: #d9d9d9;
 .demo {
   border: 1px solid $border-color;
   margin: 16px 0 32px;
-  >h2 {
+
+  > h2 {
     font-size: 20px;
     padding: 8px 16px;
     border-bottom: 1px solid $border-color;
   }
+
   &-component {
     padding: 16px;
   }
+
   &-actions {
     padding: 8px 16px;
     border-top: 1px dashed $border-color;
   }
+
   &-code {
     padding: 8px 16px;
     border-top: 1px dashed $border-color;
