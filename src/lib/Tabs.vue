@@ -15,7 +15,7 @@
 
 <script lang='ts'>
 import Tab from './Tab.vue';
-import {ref, watchEffect} from 'vue';
+import {onMounted, ref, watchEffect} from 'vue';
 
 export default {
   props: {
@@ -25,8 +25,8 @@ export default {
     const selectedItem = ref<HTMLDivElement>(null);
     const indicator = ref<HTMLDivElement>(null);
     const container = ref<HTMLDivElement>(null);
-    watchEffect(() => {
-      if (selectedItem.value !== null && indicator.value !== null && container.value !== null) {
+    onMounted(() => {
+      watchEffect(() => {
         const {width} = selectedItem.value.getBoundingClientRect();
         indicator.value.style.width = width + 'px';
         // 计算选中项和导航盒子左边距的差值
@@ -35,7 +35,8 @@ export default {
         // 将差值作为横线的左边距，就能让横线正好在当前选中项下方了。
         const left = selectedItemLeft - containerLeft;
         indicator.value.style.left = left + 'px';
-      }
+      });
+
     });
     const defaults = context.slots.default();
     defaults.forEach(tag => {
