@@ -7,9 +7,12 @@ import DialogDemo from './components/DialogDemo.vue';
 import TabsDemo from './components/TabsDemo.vue';
 import {h} from 'vue';
 import Markdown from './components/Markdown.vue';
+import intro from './markdown/intro.md';
+import start from './markdown/start.md';
+import install from './markdown/install.md';
 
-const md = fileName => {
-  return h(Markdown, {path: `../markdown/${fileName}.md`, key: fileName});
+const md = string => {
+  return h(Markdown, {content: string, key: string});
 };
 const history = createWebHashHistory();
 export const router = createRouter({
@@ -21,9 +24,9 @@ export const router = createRouter({
       component: Doc,
       children: [
         {path: '', redirect: '/doc/intro'}, //用''空字符来表示默认页面
-        {path: 'intro', component: md('intro')},
-        {path: 'start', component: md('start')},
-        {path: 'install', component: md('install')},
+        {path: 'intro', component: md(intro)},
+        {path: 'start', component: md(start)},
+        {path: 'install', component: md(install)},
         {path: 'switch', component: SwitchDemo},
         {path: 'switch', component: SwitchDemo},
         {path: 'button', component: ButtonDemo},
