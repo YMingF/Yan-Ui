@@ -47,6 +47,7 @@ $wordColor: #007974;
   justify-content: center;
   align-items: center;
   box-shadow: 0 2px 8px #f0f1f2;
+  background: #fff;
 
   > .logo {
     max-width: 6em;

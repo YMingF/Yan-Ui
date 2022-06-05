@@ -5,7 +5,6 @@ import SwitchDemo from './components/SwitchDemo.vue';
 import ButtonDemo from './components/ButtonDemo.vue';
 import DialogDemo from './components/DialogDemo.vue';
 import TabsDemo from './components/TabsDemo.vue';
-import DocDemo from './components/DocDemo.vue';
 import {h} from 'vue';
 import Markdown from './components/Markdown.vue';
 
@@ -21,7 +20,7 @@ export const router = createRouter({
       path: '/doc',
       component: Doc,
       children: [
-        {path: '', component: DocDemo}, //用''空字符来表示默认页面
+        {path: '', redirect: '/doc/intro'}, //用''空字符来表示默认页面
         {path: 'intro', component: md('intro')},
         {path: 'start', component: md('start')},
         {path: 'install', component: md('install')},
