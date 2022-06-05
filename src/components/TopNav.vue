@@ -18,7 +18,7 @@
   </div>
 </template>
 <script lang="ts">
-import {inject, Ref} from 'vue';
+import {inject, onMounted, Ref, ref} from 'vue';
 
 export default {
   props: {
@@ -29,8 +29,17 @@ export default {
     const toggleMenu = () => {
       menuVisible.value = !menuVisible.value;
     };
+    onMounted(() => {
+      const screenWidth = ref(document.documentElement.clientWidth);
+      window.onresize = () => {
+        screenWidth.value = document.documentElement.clientWidth;
+        menuVisible.value = screenWidth.value > 510;
+      };
+    });
     return {toggleMenu}; //只有return之后，外部的template才能获取到这个函数
   },
+
+
 }
 </script>
 <style lang="scss" scoped>
@@ -67,6 +76,7 @@ $wordColor: #007974;
       margin: 0 1em;
     }
   }
+
   > .toggleAside {
     width: 24px;
     height: 24px;
@@ -76,10 +86,17 @@ $wordColor: #007974;
     transform: translateY(-50%);
     display: none;
   }
-  @media (max-width: 500px){
-      > .menu{display: none; }
-      > .logo{ margin: 0 auto;}
-      > .toggleAside{display: inline-block;}
+
+  @media (max-width: 510px) {
+    > .menu {
+      display: none;
+    }
+    > .logo {
+      margin: 0 auto;
+    }
+    > .toggleAside {
+      display: inline-block;
+    }
   }
 }
 

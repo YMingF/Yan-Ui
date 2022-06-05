@@ -13,11 +13,11 @@ export default {
   setup(){
     const width=document.documentElement.clientWidth
     //menuVisible是个ref也就是个盒子，括号里设置的就是盒子里的值,width>500等同于width<=500?false:true
-    const menuVisible=ref(width > 500)
+    const menuVisible = ref(width > 510);
     provide('menuVisible',menuVisible) //给menuVisible取名为menuVisible，子组件就可以通过menuVisible这个名字来获取到menuVisible的值
     router.afterEach(()=>{
-      if (width<=500){ //即手机端去做这个事，PC端就不用切换了
-        menuVisible.value=false
+      if (document.documentElement.clientWidth <= 510) { //即手机端去做这个事，PC端就不用切换了
+        menuVisible.value = false;
       }
     })
   }
