@@ -3,11 +3,11 @@
     <div class="topNavAndBanner">
       <TopNav/>
       <div class="banner">
-        <h1>Z-UI</h1>
+        <h1>Kin Design</h1>
         <h2>一个牛皮的框架</h2>
         <p class="actions">
-          <a href="https://github.com/YMingF/Yan-Ui">GitHUb</a>
-          <router-link to="/doc">开始</router-link>
+          <a href="https://github.com/YMingF/Yan-Ui">GitHub</a>
+          <router-link to="/doc">开始使用</router-link>
         </p>
       </div>
     </div>
@@ -74,7 +74,7 @@ $wordColor: #007974;
       color: white;
       display: inline-block;
       padding: 8px 24px;
-      border-radius: $border-radius;
+      border-radius: 32px;
 
       &:hover {
         text-decoration: none;
