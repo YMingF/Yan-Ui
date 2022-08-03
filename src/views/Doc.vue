@@ -29,6 +29,10 @@
             <li>
               <router-link to="/doc/tabs">Tabs 组件</router-link>
             </li>
+            <!--            下拉菜单-->
+            <li>
+              <router-link to="/doc/dropdown">DropDown 组件</router-link>
+            </li>
           </ol>
         </aside>
         <main>
