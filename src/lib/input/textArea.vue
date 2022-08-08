@@ -30,7 +30,6 @@ export default {
       const height = textarea.scrollHeight;
 
       if (height) { // 改变textarea高度达到自适应
-        console.log(height);
         textarea.style.height = height + 'px';
         const rowsNum = Math.round(height / 24);
         textarea.style.overflowY = rowsNum > maxRow ? 'scroll' : 'hidden';
