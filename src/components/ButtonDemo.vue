@@ -33,10 +33,7 @@ import ButtonDemoLoading from '../components/ButtonDemoLoading.vue';
 export default {
   components: {Button, Demo},
   setup() {
-    const onClick = () => {
-      console.log('hi');
-    };
-    return {onClick, ButtonDemoTheme, ButtonDemoSize, ButtonDemoLoading, ButtonDemoLevel, ButtonDemoDisabled};
+    return {ButtonDemoTheme, ButtonDemoSize, ButtonDemoLoading, ButtonDemoLevel, ButtonDemoDisabled};
   },
 };
 </script>
