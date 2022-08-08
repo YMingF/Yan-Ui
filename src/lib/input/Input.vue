@@ -27,10 +27,6 @@ export default {
 .gulu-input-disabled {
   cursor: not-allowed;
 
-  &::-webkit-input-placeholder {
-    color: rgb(217, 217, 217)
-  }
-
   &:hover {
     border-color: rgb(217, 217, 217);
   }

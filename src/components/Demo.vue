@@ -5,6 +5,10 @@
     <div class="demo-component">
       <component :is="component"></component>
     </div>
+    <!--    描述-->
+    <div>
+      <component :is="descComponent"></component>
+    </div>
     <div class="demo-actions">
       <Button @click="codeVisible=!codeVisible">查看代码</Button>
     </div>
@@ -24,6 +28,7 @@ const Prism = (window as any).Prism;
 export default {
   props: {
     component: Object,
+    descComponent: Object
   },
   components: {
     Button,

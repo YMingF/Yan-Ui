@@ -41,3 +41,7 @@ $hoverColor: #40a9ff;
     border-right-width: 1px !important;
   }
 }
+
+*::-webkit-input-placeholder {
+  color: rgb(217, 217, 217)
+}
