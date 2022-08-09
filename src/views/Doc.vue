@@ -112,24 +112,30 @@ aside {
         text-decoration: none;
 
         &:hover {
-          text-decoration: underline green 2px;
+          color: #1890ff
         }
 
-        &.router-link-active {
-          color: green;
-          background: linear-gradient(145deg, rgba(227, 255, 253, 1) 0%, rgba(183, 233, 230, 1) 100%);
-
-        }
-
-        &.router-link-active:after {
-          content: '';
-          position: absolute;
+        &:after {
+          content: "";
           top: 0;
           right: 0;
           height: 100%;
-          border-right: 3px solid green;
-          transition: all 250ms;
+          position: absolute;
+          bottom: 0;
+          opacity: 0;
+          border-right: 3px solid #1890ff;
+          transform: scaleY(.0001);
+          transition: transform .40s cubic-bezier(.215, .61, .355, 1), opacity .40s cubic-bezier(.215, .61, .355, 1);
+        }
 
+        &.router-link-active {
+          color: #1890ff;
+          background-color: #e6f7ff;
+        }
+
+        &.router-link-active:after {
+          opacity: 1;
+          transform: scaleY(1);
         }
       }
 
