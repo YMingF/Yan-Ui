@@ -3,16 +3,26 @@
   <div v-if="!isEdit" class="typo-contentWrapper">
     <span id="content">{{ content }}</span>
     <!--    编辑图标-->
-    <span v-if="editable" class="svgContainer" @click="changeEditStatus">
+    <span v-if="editable" class="svgContainer editContainer" @click="changeEditStatus">
       <svg class="icon">
         <use xlink:href="#icon-edit"></use>
       </svg>
+      <!--      编辑提示-->
+      <span class="tip">
+        <span>编辑</span>
+        <span class="triangle"></span>
+      </span>
     </span>
     <!--    复制图标-->
-    <span v-if="copyable" class="svgContainer" @click="copyContent">
+    <span v-if="copyable" class="svgContainer copyContainer" @click="copyContent">
       <svg class="icon">
         <use :xlink:href="copyRef"></use>
       </svg>
+      <!--      编辑提示-->
+      <span class="tip">
+        <span>{{ copyTip }}</span>
+        <span class="triangle"></span>
+      </span>
     </span>
   </div>
   <!--  实际输入框-->
@@ -40,6 +50,7 @@ export default {
     const isEdit = ref(false);
     const inputRef = ref(null);
     const copyRef = ref('#icon-copy');
+    const copyTip = ref('复制');
     const emitContent = () => {
       const data = inputRef.value.value;
       context.emit('update:content', data);
@@ -61,8 +72,10 @@ export default {
         return;
       }
       copyRef.value = '#icon-success';
+      copyTip.value = '成功';
       setTimeout(() => {
         copyRef.value = '#icon-copy';
+        copyTip.value = '复制';
       }, 2000);
       const input = document.createElement('input');
       input.setAttribute('readonly', 'readonly');
@@ -81,7 +94,8 @@ export default {
       emitContent,
       inputRef,
       copyContent,
-      copyRef
+      copyRef,
+      copyTip
     };
   }
 };
@@ -97,6 +111,47 @@ export default {
     cursor: pointer;
     margin-left: 5px;
     color: $hoverColor;
+  }
+
+  > .editContainer, .copyContainer {
+    position: relative;
+
+    &:hover .tip {
+      visibility: visible;
+    }
+  }
+
+  .tip {
+    display: inline-block;
+    position: absolute;
+    height: 35px;
+    width: auto;
+    max-width: 100px;
+    white-space: nowrap;
+    padding: 0 10px;
+    border-radius: 5px;
+    background-color: #404040;
+    text-align: center;
+    z-index: 1;
+    top: -48px;
+    color: white;
+    font-size: 14px;
+    line-height: 35px;
+    left: -20px;
+    visibility: hidden;
+
+    > .triangle {
+      position: absolute;
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border: 1px solid;
+      transform: rotate(-45deg);
+      background-color: #404040;
+      border-color: transparent transparent white white;
+      bottom: -4px;
+      left: 22px;
+    }
   }
 }
 
