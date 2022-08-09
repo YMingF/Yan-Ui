@@ -15,9 +15,10 @@
       </svg>
     </span>
   </div>
-  <div v-if="isEdit" class="gulu-input-wrapper">
-
-    <input class="gulu-input" ref="inputRef" :value="content" @blur="emitContent" @keyup.enter="emitContent"/>
+  <!--  实际输入框-->
+  <div v-show="isEdit" class="gulu-input-wrapper">
+    <input class="gulu-input" ref="inputRef" :value="content" @blur="emitContent"
+           @keyup.enter="emitContent"/>
     <span class="svgContainer" @click="emitContent">
       <svg class="icon">
         <use xlink:href="#icon-enter"></use>
@@ -27,7 +28,7 @@
 </template>
 
 <script lang='ts'>
-import {ref} from 'vue';
+import {onUpdated, ref} from 'vue';
 
 export default {
   props: {
@@ -44,6 +45,14 @@ export default {
       context.emit('update:content', data);
       isEdit.value = false;
     };
+    onUpdated(() => {
+      if (isEdit.value) {
+        const inputDom = inputRef.value;
+        const contentLen = inputDom.value.length;
+        inputDom.focus();
+        inputDom.setSelectionRange(contentLen, contentLen);
+      }
+    });
     const changeEditStatus = () => {
       isEdit.value = !isEdit.value;
     };
