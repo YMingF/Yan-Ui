@@ -58,13 +58,11 @@ export default {
       const input = document.createElement('input');
       input.setAttribute('readonly', 'readonly');
       input.setAttribute('value', props.content);
-      console.log(props.content);
       document.body.appendChild(input);
       input.setSelectionRange(0, 9999);
       if (document.execCommand('copy')) {
-        input.select();
+        input.select(); // 选中输入框，才能复制
         document.execCommand('copy');
-        console.log('复制成功');
       }
       document.body.removeChild(input);
     };
