@@ -4,7 +4,7 @@ Grid栅格系统
 <template>
   <z_row>
     <z_col span="2"></z_col>
-    <z_col span="22"></z_col>
+    <z_col span="20" offset="2"></z_col>
   </z_row>
 </template>
 
