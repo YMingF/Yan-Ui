@@ -35,6 +35,9 @@
             <li>
               <router-link to="/doc/typo">Typography 组件</router-link>
             </li>
+            <li>
+              <router-link to="/doc/grid">Grid 栅格</router-link>
+            </li>
           </ol>
         </aside>
         <main>
