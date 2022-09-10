@@ -78,24 +78,24 @@ function createClasses(obj, str = '') {
       margin-left: ($n/24)*100%;
     }
   }
-  $arrColor: (
+  $widthArr: (
       ("minWidth":576px, "label":'ipad'),
       ("minWidth":769px, "label":'narrow-pc'),
       ("minWidth":993px, "label":'pc'),
       ("minWidth":1200px, "label":'widePc'),
   );
-  @each $item in $arrColor {
+  $prefixArr: (
+      ('label':'col', 'style':width),
+      ('label':'offset-', 'style':margin-left),
+  );
+  @each $item in $widthArr {
     @media (min-width: #{map-get($item,'minWidth')}) {
-      $class-prefix: col-#{map-get($item,'label')}-;
-      @for $n from 1 through 24 {
-        &.#{$class-prefix}#{$n} {
-          width: ($n/24)*100%;
-        }
-      }
-      $class-prefix: offset-#{map-get($item,'label')}-;
-      @for $n from 0 through 24 {
-        &.#{$class-prefix}#{$n} {
-          margin-left: ($n/24)*100%;
+      @each $prefix in $prefixArr {
+        $class-prefix: #{map-get($prefix,'label')}-#{map-get($item,'label')}-;
+        @for $n from 1 through 24 {
+          &.#{$class-prefix}#{$n} {
+            #{map-get($prefix,'style')}: ($n/24)*100%;
+          }
         }
       }
     }
