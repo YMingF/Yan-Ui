@@ -56,7 +56,7 @@ $border-color: #d9d9d9;
   }
 
   &-component {
-    padding: 16px;
+    padding: 42px 24px 50px;
   }
 
   &-actions {

@@ -7,7 +7,7 @@ import DialogDemo from './components/DialogDemo.vue';
 import TabsDemo from './components/TabsDemo.vue';
 import InputDemo from './components/Input/InputDemo.vue';
 import TPDemo from './components/typography/TPDemo.vue';
-import GridDemo from './components/Grid/GridDemo.vue';
+import GridDemo from './views/Grid/GridDemo.vue';
 import {h} from 'vue';
 import Markdown from './components/Markdown.vue';
 import intro from './markdown/intro.md';

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>Input组件示例</h1>
     <!--    普通案例-->
     <Demo :component="InputCopyDemo"/>
     <!--    密码输入框-->
