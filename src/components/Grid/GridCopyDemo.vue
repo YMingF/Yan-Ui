@@ -2,9 +2,9 @@
 Grid栅格系统
 </demo>
 <template>
-  <z_row>
+  <z_row gutter="24">
     <z_col span="2"></z_col>
-    <z_col span="20" offset="2"></z_col>
+    <z_col span="22"></z_col>
   </z_row>
 </template>
 

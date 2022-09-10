@@ -1,11 +1,11 @@
 <template>
-  <div class="col" :class="classes">
+  <div class="col" :class="classes" :style="colStyle">
     <slot></slot>
   </div>
 </template>
 
 <script lang='ts'>
-import {computed} from 'vue';
+import {computed, inject, ref} from 'vue';
 
 export default {
   props: {
@@ -13,14 +13,24 @@ export default {
     offset: {type: [Number, String]}
   },
   setup(props) {
+    const gutter = ref(0);
+    gutter.value = inject('gutter');
     const classes = computed(() => {
       return {
         [`col-${props.span}`]: props.span,
         [`offset-${props.offset}`]: props.offset
       };
     });
+    const colStyle = computed(() => {
+      return {
+        paddingLeft: gutter.value / 2 + 'px',
+        paddingRight: gutter.value / 2 + 'px'
+      };
+    });
     return {
-      classes
+      classes,
+      gutter,
+      colStyle
     };
   }
 };
@@ -30,8 +40,6 @@ export default {
 .col {
   width: 50%;
   height: 100px;
-  border: 1px solid red;
-  background-color: gray;
 
   $class-prefix: col-;
   @for $n from 1 through 24 {
