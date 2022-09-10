@@ -1,5 +1,5 @@
 <template>
-  <div class="row" :style="rowStyle">
+  <div class="row" :style="rowStyle" :class="rowClass">
     <slot></slot>
   </div>
 </template>
@@ -9,7 +9,13 @@ import {computed, provide} from 'vue';
 
 export default {
   props: {
-    gutter: [Number, String]
+    gutter: [Number, String],
+    align: {
+      type: String,
+      validator(value) {
+        return (['left', 'right', 'center'].indexOf(value) !== -1);
+      }
+    }
   },
   setup(props) {
     provide('gutter', props.gutter);
@@ -19,15 +25,33 @@ export default {
         marginRight: -props.gutter / 2 + 'px'
       };
     });
+    const rowClass = computed(() => {
+      return {
+        [`align-${props.align}`]: props.align
+      };
+    });
     return {
-      rowStyle
+      rowStyle,
+      rowClass
     };
   }
 };
 </script>
 
 <style lang='scss' scoped>
-.row{
+.row {
   display: flex;
+
+  &.align-left {
+    justify-content: flex-start;
+  }
+
+  &.align-right {
+    justify-content: flex-end;
+  }
+
+  &.align-center {
+    justify-content: center;
+  }
 }
 </style>
