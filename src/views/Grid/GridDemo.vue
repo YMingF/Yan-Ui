@@ -18,6 +18,11 @@
     <Demo :component="OffsetDemo" :desc-component="OffsetDesc"></Demo>
   </div>
 
+  <!-- 响应式布局-->
+  <div>
+    <Demo :component="ResponsiveDemo" :desc-component="ResponsiveDesc"></Demo>
+  </div>
+
 </template>
 
 <script lang='ts' setup>
@@ -32,6 +37,11 @@ import GutterDesc from '../../components/Grid/Gutter/GutterDesc.vue';
 
 import OffsetDemo from '../../components/Grid/Offset/OffsetDemo.vue';
 import OffsetDesc from '../../components/Grid/Offset/OffsetDesc.vue';
+
+import ResponsiveDemo from '../../components/Grid/Responsive/ResponsiveDemo.vue';
+import ResponsiveDesc from '../../components/Grid/Responsive/ResponsiveDesc.vue';
+
+
 import Demo from '../../components/Demo.vue';
 
 </script>

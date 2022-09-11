@@ -58,7 +58,10 @@ function createClasses(obj, str = '') {
   if (!obj) {
     return {};
   }
-  return {[`col-${str}${obj?.span}`]: obj?.span, [`offset-${str}${obj?.offset}`]: obj?.offset};
+  return {
+    [`col-${str}${obj?.span}`]: obj?.span === 0 ? '0' : obj?.span,
+    [`offset-${str}${obj?.offset}`]: obj?.offset === 0 ? '0' : obj?.offset
+  };
 }
 </script>
 
@@ -79,19 +82,19 @@ function createClasses(obj, str = '') {
   }
   $widthArr: (
       ("minWidth":576px, "label":'ipad'),
-      ("minWidth":769px, "label":'narrow-pc'),
+      ("minWidth":769px, "label":'narrowPc'),
       ("minWidth":993px, "label":'pc'),
       ("minWidth":1200px, "label":'widePc'),
   );
   $prefixArr: (
       ('label':'col', 'style':width),
-      ('label':'offset-', 'style':margin-left),
+      ('label':'offset', 'style':margin-left),
   );
   @each $item in $widthArr {
     @media (min-width: #{map-get($item,'minWidth')}) {
       @each $prefix in $prefixArr {
         $class-prefix: #{map-get($prefix,'label')}-#{map-get($item,'label')}-;
-        @for $n from 1 through 24 {
+        @for $n from 0 through 24 {
           &.#{$class-prefix}#{$n} {
             #{map-get($prefix,'style')}: ($n/24)*100%;
           }
