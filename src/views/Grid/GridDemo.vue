@@ -28,47 +28,10 @@
   <section id="api-container">
     <h2 class="title_api">API</h2>
     <h3 class="title_row">Row</h3>
-    <table class="rowTable">
-      <thead>
-      <tr>
-        <th>成员</th>
-        <th>说明</th>
-        <th>类型</th>
-        <th>默认值</th>
-      </tr>
-      </thead>
+    <api-table :head-title="titleArr" :body-data="rowTableContent"></api-table>
 
-      <tbody>
-      <!--      align-->
-      <tr>
-        <td>align</td>
-        <td>flex 布局下的垂直对齐方式：
-          <code>top</code>
-          <code>middle</code>
-          <code>bottom</code>
-        </td>
-        <td>string</td>
-        <td><code>top</code></td>
-      </tr>
-      <!--      justify-->
-      <tr>
-        <td>justify</td>
-        <td>
-          flex 布局下的水平排列方式：
-          <code>start</code><code>end</code><code>center</code><code>space-around</code><code>space-between</code>
-        </td>
-        <td>string</td>
-        <td><code>start</code></td>
-      </tr>
-      <!--      gutter-->
-      <tr>
-        <td>gutter</td>
-        <td>栅格间隔，可以写成像素值来设置水平间隔</td>
-        <td>number/string</td>
-        <td><code>0</code></td>
-      </tr>
-      </tbody>
-    </table>
+    <h3 class="title_row">Col</h3>
+    <api-table :head-title="titleArr" :body-data="colTableContent"></api-table>
   </section>
 </template>
 
@@ -90,7 +53,45 @@ import ResponsiveDesc from '../../components/Grid/Responsive/ResponsiveDesc.vue'
 
 
 import Demo from '../../components/Demo.vue';
+import ApiTable from '../../components/common/ApiTableContainer.vue';
 
+const titleArr = ['成员', '说明', '类型', '默认值'];
+const rowTableContent = [
+  ['align', `flex 布局下的垂直对齐方式：<code>top</code> <code>middle</code><code>bottom</code>`, 'string', `<code>top</code>`
+  ],
+  [`justify`,
+    `flex 布局下的水平排列方式：<code>start</code><code>end</code><code>center</code><code>space-around</code><code>space-between</code>`,
+    `string`,
+    `<code>start</code>`],
+  [`gutter`, `栅格间隔，可以写成像素值来设置水平间隔`, `number/string`, `<code>0</code>`]
+];
+
+const colTableContent = [
+  [`span`,
+    `栅格占位格数，为 0 时相当于 display: none`,
+    `number`,
+    `-`],
+  [`offset`,
+    `栅格左侧的间隔格数`,
+    `number`,
+    `-`],
+  [`widePc`,
+    `<code>≥1200px</code> 响应式栅格，可为栅格数或一个包含其他属性的对象`,
+    `number/object`,
+    `-`],
+  [`pc`,
+    `<code>≥993px</code>响应式栅格，可为栅格数或一个包含其他属性的对象`,
+    `number/object`,
+    `-`],
+  [`narrowPc`,
+    `<code>≥769px</code>响应式栅格，可为栅格数或一个包含其他属性的对象`,
+    `number/object`,
+    `-`],
+  [`ipad`,
+    `<code>≥576px</code>响应式栅格，可为栅格数或一个包含其他属性的对象`,
+    `number/object`,
+    `-`]
+];
 </script>
 
 <style lang='scss' scoped>
@@ -131,41 +132,13 @@ import Demo from '../../components/Demo.vue';
 
 // API部分
 #api-container {
+  .title_api {
+    margin: 38px 0 14px 0;
+  }
+
   .title_row {
     margin: 28px 0 18px 0
   }
 
-  .rowTable {
-    width: 100%;
-    border: 1px solid #f0f0f0;
-
-    & th {
-      padding: 14px 12px 12px 12px;
-      text-align: left;
-      color: #5c6b77;
-      font-weight: 500;
-      white-space: nowrap;
-      background: rgba(0, 0, 0, .02);
-    }
-
-    tbody {
-      vertical-align: middle;
-
-      & td {
-        padding: 12px;
-        border-top: 1px solid #f0f0f0;
-        text-align: left;
-        color: #595959;
-        font-weight: 550;
-        white-space: nowrap;
-
-        &:nth-child(3) {
-          width: 22%;
-          color: #c41d7f;
-          font-size: 13px;
-        }
-      }
-    }
-  }
 }
 </style>
