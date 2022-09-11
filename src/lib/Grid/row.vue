@@ -12,12 +12,14 @@ export default {
     gutter: [Number, String],
     justify: {
       type: String,
+      default: 'start',
       validator(value) {
         return (['left', 'right', 'center'].indexOf(value) !== -1);
       }
     },
     align: {
       type: String,
+      default: 'top',
       validator(value) {
         return (['top', 'middle', 'bottom'].indexOf(value) !== -1);
       }
