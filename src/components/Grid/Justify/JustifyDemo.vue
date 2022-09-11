@@ -1,5 +1,5 @@
 <demo>
-栅格横向排版
+子元素横向对齐
 </demo>
 <template>
   <p>element align left</p>

@@ -3,7 +3,12 @@
   <div>
     <Demo :component="GutterDemo" :desc-component="GutterDesc"></Demo>
   </div>
-  <!-- 排版-->
+  <!-- 纵向排版-->
+  <div>
+    <Demo :component="AlignDemo" :desc-component="AlignDesc"></Demo>
+  </div>
+
+  <!-- 横向排版-->
   <div>
     <Demo :component="JustifyDemo" :desc-component="JustifyDesc"></Demo>
   </div>
@@ -16,6 +21,9 @@
 </template>
 
 <script lang='ts' setup>
+import AlignDemo from '../../components/Grid/Align/AlignDemo.vue';
+import AlignDesc from '../../components/Grid/Align/AlignDesc.vue';
+
 import JustifyDemo from '../../components/Grid/Justify/JustifyDemo.vue';
 import JustifyDesc from '../../components/Grid/Justify/JustifyDesc.vue';
 

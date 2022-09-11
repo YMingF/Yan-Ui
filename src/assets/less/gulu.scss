@@ -82,3 +82,11 @@ $hoverColor: #40a9ff;
 .svgContainer {
   cursor: pointer;
 }
+
+$numArr: 50, 80, 100, 120;
+@each $num in $numArr {
+  .height-#{$num} {
+    height: #{$num}px;
+    line-height: #{$num}px;
+  }
+}

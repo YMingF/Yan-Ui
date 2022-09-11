@@ -102,7 +102,7 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-@import "src/lib/gulu";
+@import "../../assets/less/gulu";
 
 .typo-contentWrapper {
   width: 100%;

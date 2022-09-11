@@ -1,5 +1,5 @@
 import './index.scss';
-import './lib/gulu.scss';
+import './assets/less/gulu.scss';
 import {createApp} from 'vue';
 import App from './App.vue';
 import {router} from './router';

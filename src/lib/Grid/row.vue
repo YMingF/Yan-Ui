@@ -15,6 +15,12 @@ export default {
       validator(value) {
         return (['left', 'right', 'center'].indexOf(value) !== -1);
       }
+    },
+    align: {
+      type: String,
+      validator(value) {
+        return (['top', 'middle', 'bottom'].indexOf(value) !== -1);
+      }
     }
   },
   setup(props) {
@@ -27,7 +33,8 @@ export default {
     });
     const rowClass = computed(() => {
       return {
-        [`justify-${props.justify}`]: props.justify
+        [`justify-${props.justify}`]: props.justify,
+        [`align-${props.align}`]: props.align
       };
     });
     return {
@@ -42,25 +49,27 @@ export default {
 .z_row {
   display: flex;
   flex-wrap: wrap;
-
-  &.justify-start {
-    justify-content: flex-start;
+  $justifyArr: (
+      ('label':start, "content":flex-start),
+      ('label':end, "content":flex-end),
+      ('label':center, "content":center),
+      ('label':space-between, "content":space-between),
+      ('label':space-around, "content":space-around),
+  );
+  $alignArr: (
+      ('label':top, "content":flex-start),
+      ('label':bottom, "content":flex-end),
+      ('label':middle, "content":center),
+  );
+  @each $justify in $justifyArr {
+    &.justify-#{map-get($justify,'label')} {
+      justify-content: map-get($justify, 'content');
+    }
   }
-
-  &.justify-end {
-    justify-content: flex-end;
-  }
-
-  &.justify-center {
-    justify-content: center;
-  }
-
-  &.justify-space-between {
-    justify-content: space-between;
-  }
-
-  &.justify-space-around {
-    justify-content: space-around;
+  @each $align in $alignArr {
+    &.align-#{map-get($align,'label')} {
+      align-items: map-get($align, 'content');
+    }
   }
 }
 </style>
