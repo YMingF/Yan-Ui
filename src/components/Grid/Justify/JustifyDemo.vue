@@ -48,8 +48,6 @@ import z_row from '../../../lib/Grid/row.vue';
 import z_col from '../../../lib/Grid/col.vue';
 
 export default {
-  components: {z_row, z_col},
-  setup() {
-  }
+  components: {z_row, z_col}
 };
 </script>

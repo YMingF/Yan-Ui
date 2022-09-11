@@ -3,16 +3,16 @@
 </demo>
 <template>
   <z_row gutter="16">
-    <z_col span="6">
+    <z_col class="gutter-row" span="6">
       <div class="gutter-box">col-6</div>
     </z_col>
-    <z_col span="6">
+    <z_col class="gutter-row" span="6">
       <div class="gutter-box">col-6</div>
     </z_col>
-    <z_col span="6">
+    <z_col class="gutter-row" span="6">
       <div class="gutter-box">col-6</div>
     </z_col>
-    <z_col span="6">
+    <z_col class="gutter-row" span="6">
       <div class="gutter-box">col-6</div>
     </z_col>
   </z_row>
