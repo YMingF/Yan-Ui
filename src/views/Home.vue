@@ -3,8 +3,8 @@
     <div class="topNavAndBanner">
       <TopNav/>
       <div class="banner">
-        <h1>Kin Design</h1>
-        <h2>一个牛皮的框架</h2>
+        <h1>ZUI</h1>
+        <h2>一个简易的UI框架</h2>
         <p class="actions">
           <a href="https://github.com/YMingF/Yan-Ui">GitHub</a>
           <router-link to="/doc">开始使用</router-link>
@@ -37,14 +37,33 @@
       </ul>
     </div>
   </div>
+  <button @click="test">点下我哈哈哈</button>
 </template>
 
 <script lang="ts">
-import TopNav from "../components/TopNav.vue";
+import TopNav from '../components/TopNav.vue';
+import {getCurrentInstance} from 'vue';
 
 export default {
-  components: {TopNav}
-}
+  components: {TopNav},
+  setup() {
+    const instance = getCurrentInstance();
+
+    function test() {
+      instance.appContext.config.globalProperties.$toast({
+        message: `请完成必选项`,
+        enableHtml: true,
+        closeButton: {
+          text: '点我', callback: () => {
+            console.log('你知不知道我在想你');
+          }
+        }
+      });
+    }
+
+    return {test};
+  }
+};
 </script>
 
 
