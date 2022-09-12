@@ -38,6 +38,9 @@
             <li>
               <router-link to="/doc/grid">Grid 栅格</router-link>
             </li>
+            <li>
+              <router-link to="/doc/toast">Toast</router-link>
+            </li>
           </ol>
         </aside>
         <main>

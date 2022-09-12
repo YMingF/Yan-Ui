@@ -2,11 +2,12 @@ import {createRouter, createWebHashHistory} from 'vue-router';
 import Home from './views/Home.vue';
 import Doc from './views/Doc.vue';
 import SwitchDemo from './components/Switch/SwitchDemo.vue';
-import ButtonDemo from './components/Button/ButtonDemo.vue';
+import ButtonDemo from './views/Button/ButtonDemo.vue';
 import DialogDemo from './components/Dialog/DialogDemo.vue';
 import TabsDemo from './components/Tab/TabsDemo.vue';
 import InputDemo from './components/Input/InputDemo.vue';
 import TPDemo from './components/typography/TPDemo.vue';
+import ToastDemo from './views/Toast/ToastDemo.vue';
 import GridDemo from './views/Grid/GridDemo.vue';
 import {h} from 'vue';
 import Markdown from './components/common/Markdown.vue';
@@ -36,7 +37,8 @@ export const router = createRouter({
         {path: 'tabs', component: TabsDemo},
         {path: 'input', component: InputDemo},
         {path: 'typo', component: TPDemo},
-        {path: 'grid', component: GridDemo}
+        {path: 'grid', component: GridDemo},
+        {path: 'toast', component: ToastDemo}
       ],
     },
   ],
