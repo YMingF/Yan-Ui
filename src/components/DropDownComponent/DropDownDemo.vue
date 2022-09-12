@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-import Demo from '../Demo.vue';
+import Demo from '../common/Demo.vue';
 import DropDownBasic from './DropDownBasic.vue'
 export default {
   components: {Demo},

@@ -20,7 +20,7 @@
 </template>
 
 <script lang='ts'>
-import Button from '../lib/Button.vue';
+import Button from '../../lib/Button.vue';
 import 'prismjs';
 import {computed, ref} from 'vue';
 // 适应这个库的写法
@@ -78,6 +78,6 @@ $border-color: #d9d9d9;
 </style>
 <style lang="scss">
 // 无法在js里导入这个css，只能这样导
-@import 'prismjs/themes/prism-okaidia.css';
+@import '../../../node_modules/prismjs/themes/prism-okaidia.css';
 
 </style>

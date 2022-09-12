@@ -18,7 +18,7 @@ import InputPassword from './PasswordCopyDemo.vue';
 import DisableInput from './DisableCopyDemo.vue';
 import TextAreaInput from './TextAreaCopyDemo.vue';
 import textareaDesc from '../../lib/input/textAreaDesc.vue';
-import Demo from '../Demo.vue';
+import Demo from '../common/Demo.vue';
 
 export default {
   components: {Demo},

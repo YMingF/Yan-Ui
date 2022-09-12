@@ -41,7 +41,7 @@
 </template>
 
 <script lang="ts">
-import TopNav from '../components/TopNav.vue';
+import TopNav from '../components/common/TopNav.vue';
 import {getCurrentInstance} from 'vue';
 
 export default {

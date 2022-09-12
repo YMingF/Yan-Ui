@@ -11,7 +11,7 @@ theme 示例
 </template>
 
 <script lang='ts'>
-import Button from '../lib/Button.vue';
+import Button from '../../lib/Button.vue';
 
 export default {
   components: {Button},

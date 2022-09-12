@@ -4,7 +4,7 @@ import {createApp} from 'vue';
 import App from './App.vue';
 import {router} from './router';
 import 'github-markdown-css';
-import Markdown from './components/Markdown.vue';
+import Markdown from './components/common/Markdown.vue';
 import toast from './plugin/toast.js';
 const app = createApp(App);
 app.use(router);

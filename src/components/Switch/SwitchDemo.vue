@@ -9,7 +9,7 @@
 <script lang="ts">
 import Switch1Demo from './Switch1.demo.vue';
 import Switch2Demo from './Switch2.demo.vue';
-import Demo from '../components/Demo.vue';
+import Demo from '../common/Demo.vue';
 
 export default {
   components: {

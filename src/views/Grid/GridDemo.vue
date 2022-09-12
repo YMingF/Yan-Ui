@@ -52,7 +52,7 @@ import ResponsiveDemo from '../../components/Grid/Responsive/ResponsiveDemo.vue'
 import ResponsiveDesc from '../../components/Grid/Responsive/ResponsiveDesc.vue';
 
 
-import Demo from '../../components/Demo.vue';
+import Demo from '../../components/common/Demo.vue';
 import ApiTable from '../../components/common/ApiTableContainer.vue';
 
 const titleArr = ['成员', '说明', '类型', '默认值'];
