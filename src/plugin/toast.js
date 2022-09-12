@@ -1,4 +1,4 @@
-import Toast from '../components/Toast/Toast.vue';
+import Toast from '../lib/Toast/Toast.vue';
 import {createVNode, render} from 'vue';
 
 let currentToast; // 存放当前创建的toast组件元素

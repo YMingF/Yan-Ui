@@ -23,12 +23,12 @@
 </template>
 <script lang="ts">
 import Button from '../../lib/Button.vue';
-import Demo from '../common/Demo.vue';
-import ButtonDemoTheme from './ButtonDemoTheme.vue';
-import ButtonDemoSize from './ButtonDemoSize.vue';
-import ButtonDemoLevel from './ButtonDemoLevel.vue';
-import ButtonDemoDisabled from './ButtonDemoDisabled.vue';
-import ButtonDemoLoading from './ButtonDemoLoading.vue';
+import Demo from '../../components/common/Demo.vue';
+import ButtonDemoTheme from '../../components/Button/ButtonDemoTheme.vue';
+import ButtonDemoSize from '../../components/Button/ButtonDemoSize.vue';
+import ButtonDemoLevel from '../../components/Button/ButtonDemoLevel.vue';
+import ButtonDemoDisabled from '../../components/Button/ButtonDemoDisabled.vue';
+import ButtonDemoLoading from '../../components/Button/ButtonDemoLoading.vue';
 
 export default {
   components: {Button, Demo},
