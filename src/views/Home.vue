@@ -52,6 +52,7 @@ export default {
     function test() {
       instance.appContext.config.globalProperties.$toast({
         message: `请完成必选项`,
+        position: 'middle',
         enableHtml: true,
         closeButton: {
           text: '点我', callback: () => {

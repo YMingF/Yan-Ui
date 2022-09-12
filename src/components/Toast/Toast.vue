@@ -1,5 +1,5 @@
 <template>
-  <div ref="toastRef" id="toastComponent">
+  <div ref="toastRef" id="toastComponent" :class="toastClasses">
     <main class="toast-message">
       <p v-if="enableHtml" v-html="message"></p>
       <p v-else>{{ message }}</p>
@@ -9,7 +9,7 @@
 </template>
 
 <script lang='ts'>
-import {nextTick, onMounted, Ref, ref} from 'vue';
+import {computed, nextTick, onMounted, Ref, ref} from 'vue';
 
 interface CloseBtn {
   text: String,
@@ -39,6 +39,13 @@ export default {
     enableHtml: {
       type: Boolean,
       default: false
+    },
+    position: {
+      type: String,
+      default: 'top',
+      validator(value) {
+        return ['top', 'middle', 'bottom'].indexOf(value) !== -1;
+      }
     }
   },
   setup(props) {
@@ -48,6 +55,12 @@ export default {
       updateStyle(lineRef, toastRef);
     });
     execAutoClose(props.autoClose, props.autoCloseDelay, close);
+
+    const toastClasses = computed(() => {
+      return {
+        [`position-${props.position}`]: props.position
+      };
+    });
 
     // 让toast消失
     function close() {
@@ -63,7 +76,8 @@ export default {
     return {
       toastRef,
       clickClose,
-      lineRef
+      lineRef,
+      toastClasses
     };
   }
 };
@@ -86,9 +100,7 @@ $toast-min-height: 40px;
 $toast-bg: rgba(0, 0, 0, 0.75);
 #toastComponent {
   position: fixed;
-  top: 0;
   left: 50%;
-  transform: translateX(-50%);
   display: flex;
   align-items: center;
   padding: 0 16px;
@@ -99,6 +111,24 @@ $toast-bg: rgba(0, 0, 0, 0.75);
   font-size: 14px;
   color: #fff;
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+
+  &.position-bottom {
+    bottom: 0;
+    transform: translateX(-50%);
+
+  }
+
+  &.position-top {
+    top: 0;
+    transform: translateX(-50%);
+
+  }
+
+  &.position-middle {
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+  }
 
   .toast-message {
     padding: 8px 0;
