@@ -23,7 +23,7 @@ export default {
     message: String,
     autoClose: {
       type: Boolean,
-      default: false
+      default: true
     },
     autoCloseDelay: {
       type: Number,
@@ -136,6 +136,7 @@ $animation-duration: 300ms;
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 999;
 
   .inner {
     display: flex;
@@ -183,9 +184,9 @@ $animation-duration: 300ms;
     display: flex;
     align-items: center;
     padding-left: 16px;
-    padding-right: 16px;
     margin-left: 16px;
     border-left: 2px solid #666;
+    cursor: pointer;
     text-align: center;
     flex-shrink: 0;
 
