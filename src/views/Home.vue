@@ -37,33 +37,13 @@
       </ul>
     </div>
   </div>
-  <button @click="test">点下我哈哈哈</button>
 </template>
 
 <script lang="ts">
 import TopNav from '../components/common/TopNav.vue';
-import {getCurrentInstance} from 'vue';
 
 export default {
   components: {TopNav},
-  setup() {
-    const instance = getCurrentInstance();
-
-    function test() {
-      instance.appContext.config.globalProperties.$toast({
-        message: `请完成必选项`,
-        position: 'middle',
-        enableHtml: true,
-        closeButton: {
-          text: '点我', callback: () => {
-            console.log('你知不知道我在想你');
-          }
-        }
-      });
-    }
-
-    return {test};
-  }
 };
 </script>
 

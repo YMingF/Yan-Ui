@@ -41,6 +41,9 @@
             <li>
               <router-link to="/doc/toast">Toast</router-link>
             </li>
+            <li>
+              <router-link to="/doc/popover">popover</router-link>
+            </li>
           </ol>
         </aside>
         <main>
