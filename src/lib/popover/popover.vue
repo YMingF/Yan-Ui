@@ -1,15 +1,24 @@
 <template>
   <div id="popover" @click="changeStatus">
-    <div ref="contentWrapper" class="content-wrapper" v-if="visible">
+    <div ref="contentWrapper" class="content-wrapper" v-if="visible" :class="{[`position-${position}`]:position}">
       <slot name="content"></slot>
     </div>
-    <span ref="triggerWrapper">
+    <span class="triggerWrapper" ref="triggerWrapper">
      <slot></slot>
     </span>
   </div>
 </template>
 
 <script lang='ts' setup>
+const props = defineProps({
+  position: {
+    type: String,
+    default: 'top',
+    validator(value: string): boolean {
+      return ['top', 'left', 'right', 'bottom'].indexOf(value) !== -1;
+    }
+  }
+});
 import {nextTick, ref} from 'vue';
 
 const visible = ref(false);
@@ -48,25 +57,116 @@ function onclickDoc(e) {
 
 function positionContent() {
   document.body.appendChild(contentWrapper.value);
-  let {top, left} = triggerWrapper.value.getBoundingClientRect();
+  let {top, left, width: btnWidth, height: btnHeight} = triggerWrapper.value.getBoundingClientRect();
+  const {height: contentHeight} = contentWrapper.value.getBoundingClientRect();
   // window.scrollX和window.scrollY加到这里是为了在出现滚动条的情况下，弹框也能准确出现在按钮上方
-  contentWrapper.value.style.left = `${left + window.scrollX}px`;
-  contentWrapper.value.style.top = `${top + window.scrollY}px`;
+  //(contentHeight - btnHeight) / 2 是为了让弹窗和按钮在垂直方向居中
+  const diffPos = {
+    'top': {left, top},
+    'left': {left, top: top - (contentHeight - btnHeight) / 2},
+    'right': {left: left + btnWidth, top: top - (contentHeight - btnHeight) / 2},
+    'bottom': {left: left, top: top + btnHeight}
+  };
+  contentWrapper.value.style.left = `${diffPos[props.position]['left'] + window.scrollX}px`;
+  contentWrapper.value.style.top = `${diffPos[props.position]['top'] + window.scrollY}px`;
 }
 
 </script>
 
 <style lang='scss' scoped>
+$border-radius: 2px;
 #popover {
   display: inline-block;
   vertical-align: top;
   position: relative;
+
+  .triggerWrapper {
+    display: inline-block;
+  }
 }
 
 .content-wrapper {
   position: absolute;
-  transform: translateY(-100%);
   left: 0;
-  border: 1px solid red;
+  z-index: 999;
+  border-radius: $border-radius;
+  box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014, 0 9px 28px 8px #0000000d;
+  padding: 12px 16px;
+  color: #000000d9;
+  background-color: #fff;
+  max-width: 20em;
+  word-break: break-all;
+
+  &::before, &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+  }
+
+  &.position-top {
+    transform: translateY(-100%);
+    margin-top: -10px;
+
+    &::before, &::after {
+      top: 100%;
+      left: 10%;
+      transform: translateX(-50%);
+      border-top-color: lightgray;
+    }
+
+    &::after {
+      top: calc(100% - 1px);
+      border-top-color: white;
+    }
+  }
+
+  &.position-bottom {
+    margin-top: 10px;
+
+    &::before, &::after {
+      transform: translateY(-100%);
+      top: 0;
+      border-bottom-color: lightgray;
+    }
+
+    &::after {
+      transform: translateY(-98%);
+      border-bottom-color: white;
+    }
+  }
+
+  &.position-right {
+    margin-left: 10px;
+
+    &::before, &::after {
+      top: 50%;
+      left: 0;
+      border-right-color: lightgray;
+      transform: translate(-100%, -50%);
+    }
+
+    &::after {
+      border-right-color: white;
+    }
+  }
+
+  &.position-left {
+    margin-left: -10px;
+    transform: translateX(-100%);
+
+    &::before, &::after {
+      top: 50%;
+      right: 0;
+      border-left-color: lightgray;
+      transform: translate(100%, -50%);
+    }
+
+    &::after {
+      border-left-color: white;
+    }
+  }
 }
 </style>
