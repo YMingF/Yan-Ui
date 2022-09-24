@@ -1,5 +1,5 @@
 <template>
-  <div id="popover" @click="changeStatus">
+  <div id="popover" ref="popoverRef">
     <div ref="contentWrapper" class="content-wrapper" v-if="visible" :class="{[`position-${position}`]:position}">
       <slot name="content"></slot>
     </div>
@@ -17,13 +17,39 @@ const props = defineProps({
     validator(value: string): boolean {
       return ['top', 'left', 'right', 'bottom'].indexOf(value) !== -1;
     }
+  },
+  trigger: {
+    type: String,
+    default: 'click',
+    validator(value: string): boolean {
+      return ['click', 'hover'].indexOf(value) !== -1;
+    }
   }
 });
-import {nextTick, ref} from 'vue';
+import {computed, nextTick, onMounted, onUnmounted, ref} from 'vue';
 
 const visible = ref(false);
 const triggerWrapper = ref<HTMLElement>(null);
 const contentWrapper = ref<HTMLElement>(null);
+const popoverRef = ref<HTMLElement>(null);
+
+onMounted(() => {
+  if (props.trigger === 'click') {
+    popoverRef.value.addEventListener('click', changeStatus);
+  } else {
+    popoverRef.value.addEventListener('mouseenter', showContent);
+    popoverRef.value.addEventListener('mouseleave', close);
+  }
+});
+// 组件挂载的时候需手动销毁事件
+onUnmounted(() => {
+  if (props.trigger === 'click') {
+    popoverRef.value.removeEventListener('click', changeStatus);
+  } else {
+    popoverRef.value.removeEventListener('mouseenter', showContent);
+    popoverRef.value.removeEventListener('mouseleave', close);
+  }
+});
 
 function changeStatus(event) {
   if (triggerWrapper.value.contains(event.target)) {
