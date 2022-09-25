@@ -2,30 +2,20 @@
 设置弹出位置
 </demo>
 <template>
-  <Button level="main" @click="showToast({position:'top'})">上方弹出</Button>
-  <Button level="main" @click="showToast({position:'middle'})">中间弹出</Button>
-  <Button level="main" @click="showToast({position:'bottom'})">下方弹出</Button>
+  <z-button level="main" @click="showToast({position:'top'})">上方弹出</z-button>
+  <z-button level="main" @click="showToast({position:'middle'})">中间弹出</z-button>
+  <z-button level="main" @click="showToast({position:'bottom'})">下方弹出</z-button>
 </template>
 
-<script lang='ts'>
-import Button from '../../lib/Button.vue';
+<script lang='ts' setup>
 import {getCurrentInstance} from 'vue';
 
-export default {
-  components: {Button},
-  setup() {
-    const {$toast} = getCurrentInstance().appContext.config.globalProperties;
+const {$toast} = getCurrentInstance().appContext.config.globalProperties;
 
-    function showToast({position}) {
-      $toast({
-        message: '提示信息',
-        position
-      });
-    }
-
-    return {
-      showToast
-    };
-  }
-};
+function showToast({position}) {
+  $toast({
+    message: '提示信息',
+    position
+  });
+}
 </script>

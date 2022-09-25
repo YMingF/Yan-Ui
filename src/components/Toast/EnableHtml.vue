@@ -3,29 +3,18 @@
 </demo>
 
 <template>
-
-  <Button level="main" @click="showToast">点击弹出</Button>
+  <z-button level="main" @click="showToast">点击弹出</z-button>
 </template>
 
-<script lang='ts'>
-import Button from '../../lib/Button.vue';
+<script lang='ts' setup>
 import {getCurrentInstance} from 'vue';
 
-export default {
-  components: {Button},
-  setup() {
-    const {$toast} = getCurrentInstance().appContext.config.globalProperties;
+const {$toast} = getCurrentInstance().appContext.config.globalProperties;
 
-    function showToast() {
-      $toast({
-        message: `<p style="color: red;">一探究竟</p>`,
-        enableHtml: true
-      });
-    }
-
-    return {
-      showToast
-    };
-  }
-};
+function showToast() {
+  $toast({
+    message: `<p style="color: red;">一探究竟</p>`,
+    enableHtml: true
+  });
+}
 </script>

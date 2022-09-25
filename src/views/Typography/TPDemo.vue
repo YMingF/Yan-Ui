@@ -7,8 +7,8 @@
 </template>
 
 <script lang='ts'>
-import TPDemo from './TPCopyDemo.vue';
-import Demo from '../common/Demo.vue';
+import TPDemo from '../../components/typography/TPCopyDemo.vue';
+import Demo from '../../components/common/Demo.vue';
 
 export default {
   components: {Demo},

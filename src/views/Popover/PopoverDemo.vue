@@ -1,17 +1,20 @@
 <template>
   <div id="popoverDemo">
-    <Demo :component="popover"></Demo>
+    <Demo :component="DiffPosition"></Demo>
   </div>
+  <!--  点击还是hover方式触发-->
+  <Demo :component="IsVisible"></Demo>
 </template>
 
 <script lang='ts'>
 import Demo from '../../components/common/Demo.vue';
-import popover from '../../components/popover/commonDemo.vue';
+import DiffPosition from '../../components/Popover/diffPosition.vue';
+import IsVisible from '../../components/Popover/isVisible.vue';
 
 export default {
   components: {Demo},
   setup() {
-    return {popover};
+    return {DiffPosition, IsVisible};
   }
 };
 </script>

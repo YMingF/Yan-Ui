@@ -103,7 +103,7 @@ const colTableContent = [
     text-align: center;
   }
 
-  :deep(.z_row>div:not(.gutter-row )) {
+  :deep(.z-row>div:not(.gutter-row )) {
     padding: 16px 0;
     text-align: center;
     background-color: #0092ff;

@@ -3,8 +3,8 @@
 </template>
 
 <script lang="ts">
-import Demo from '../common/Demo.vue';
-import TabsCopyDemo from './TabsCopyDemo.vue';
+import Demo from '../../components/common/Demo.vue';
+import TabsCopyDemo from '../../components/Tab/TabsCopyDemo.vue';
 
 export default {
   components: {Demo},

@@ -1,5 +1,5 @@
 <template>
-  <div class="z_row" :style="rowStyle" :class="rowClass">
+  <div class="z-row" :style="rowStyle" :class="rowClass">
     <slot></slot>
   </div>
 </template>
@@ -48,7 +48,7 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-.z_row {
+.z-row {
   display: flex;
   flex-wrap: wrap;
   $justifyArr: (

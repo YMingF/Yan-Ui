@@ -24,9 +24,10 @@ const props = defineProps({
     validator(value: string): boolean {
       return ['click', 'hover'].indexOf(value) !== -1;
     }
-  }
+  },
+  visible: {type: Boolean, default: false}
 });
-import {computed, nextTick, onMounted, onUnmounted, ref} from 'vue';
+import { nextTick, onMounted, onUnmounted, ref} from 'vue';
 
 const visible = ref(false);
 const triggerWrapper = ref<HTMLElement>(null);

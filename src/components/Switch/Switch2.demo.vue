@@ -2,27 +2,11 @@
 支持 disabled
 </demo>
 <template>
-  <Switch v-model:value="bool" disabled=""/>
+  <z-switch v-model:value="bool" disabled></z-switch>
 </template>
 
-<script lang='ts'>
-
-import Switch from '../../lib/Switch.vue';
+<script lang='ts' setup>
 import {ref} from 'vue';
 
-export default {
-  components: {
-    Switch,
-  },
-  setup() {
-    const bool = ref(false);
-    return {
-      bool,
-    };
-  },
-};
+const bool = ref(false);
 </script>
-
-<style lang='scss' scoped>
-
-</style>

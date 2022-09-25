@@ -1,5 +1,5 @@
 <template>
-  <div class="z_col" :class="classes" :style="colStyle">
+  <div class="z-col" :class="classes" :style="colStyle">
     <slot></slot>
   </div>
 </template>
@@ -66,7 +66,7 @@ function createClasses(obj, str = '') {
 </script>
 
 <style lang='scss' scoped>
-.z_col {
+.z-col {
 
   $class-prefix: col-;
   @for $n from 1 through 24 {

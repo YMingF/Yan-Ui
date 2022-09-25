@@ -3,18 +3,14 @@
 </demo>
 <template>
   <div>
-    <Input v-model:value="textValue" placeholder="disable" disabled/>
+    <z-input v-model:value="textValue" placeholder="disable" disabled></z-input>
   </div>
 </template>
 
 <script lang='ts'>
 import {ref} from 'vue';
-import Input from '../../lib/input/Input.vue';
 
 export default {
-  components: {
-    Input,
-  },
   setup() {
     const textValue = ref('');
     return {

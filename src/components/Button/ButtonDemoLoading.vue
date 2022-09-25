@@ -3,15 +3,8 @@ loading
 </demo>
 <template>
   <div>
-    <Button loading>加载中</Button>
-    <Button>加载完毕</Button>
+    <z-button loading>加载中</z-button>
+    <z-button>加载完毕</z-button>
   </div>
 </template>
 
-<script lang='ts'>
-import Button from '../../lib/Button.vue';
-
-export default {
-  components: {Button},
-};
-</script>

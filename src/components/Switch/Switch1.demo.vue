@@ -2,27 +2,11 @@
 常规用法
 </demo>
 <template>
-  <Switch v-model:value="bool"/>
+  <z-switch v-model:value="bool"></z-switch>
 </template>
 
-<script lang='ts'>
-
-import Switch from '../../lib/Switch.vue';
+<script lang='ts' setup>
 import {ref} from 'vue';
 
-export default {
-  components: {
-    Switch,
-  },
-  setup() {
-    const bool = ref(false);
-    return {
-      bool,
-    };
-  },
-};
+const bool = ref(false);
 </script>
-
-<style lang='scss' scoped>
-
-</style>

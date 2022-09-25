@@ -13,12 +13,12 @@
 
 <script lang='ts'>
 import {ref} from 'vue';
-import InputCopyDemo from './BasicInputCopyDemo.vue';
-import InputPassword from './PasswordCopyDemo.vue';
-import DisableInput from './DisableCopyDemo.vue';
-import TextAreaInput from './TextAreaCopyDemo.vue';
+import InputCopyDemo from '../../components/Input/BasicInputCopyDemo.vue';
+import InputPassword from '../../components/Input/PasswordCopyDemo.vue';
+import DisableInput from '../../components/Input/DisableCopyDemo.vue';
+import TextAreaInput from '../../components/Input/TextAreaCopyDemo.vue';
 import textareaDesc from '../../lib/input/textAreaDesc.vue';
-import Demo from '../common/Demo.vue';
+import Demo from '../../components/common/Demo.vue';
 
 export default {
   components: {Demo},

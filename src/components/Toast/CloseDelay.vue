@@ -3,28 +3,18 @@
 </demo>
 
 <template>
-  <Button level="main" @click="showToast">上方弹出</Button>
+  <z-button level="main" @click="showToast">上方弹出</z-button>
 </template>
 
-<script lang='ts'>
-import Button from '../../lib/Button.vue';
+<script lang='ts' setup>
 import {getCurrentInstance} from 'vue';
 
-export default {
-  components: {Button},
-  setup() {
-    const {$toast} = getCurrentInstance().appContext.config.globalProperties;
+const {$toast} = getCurrentInstance().appContext.config.globalProperties;
 
-    function showToast() {
-      $toast({
-        message: '提示信息',
-        autoCloseDelay: 10
-      });
-    }
-
-    return {
-      showToast
-    };
-  }
-};
+function showToast() {
+  $toast({
+    message: '提示信息',
+    autoCloseDelay: 10
+  });
+}
 </script>
