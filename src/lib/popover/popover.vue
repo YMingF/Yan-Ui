@@ -27,7 +27,8 @@ const props = defineProps({
   },
   visible: {type: Boolean, default: false}
 });
-import { nextTick, onMounted, onUnmounted, ref} from 'vue';
+const emits = defineEmits(['update:visible']);
+import {nextTick, onMounted, onUnmounted, ref, watch} from 'vue';
 
 const visible = ref(false);
 const triggerWrapper = ref<HTMLElement>(null);
@@ -64,6 +65,7 @@ function changeStatus(event) {
 
 function showContent() {
   visible.value = true;
+  emits('update:visible', visible.value);
   nextTick(() => {
     positionContent();
     document.addEventListener('click', onclickDoc);
@@ -73,6 +75,7 @@ function showContent() {
 // 主要功能内聚到一起
 function close() {
   visible.value = false;
+  emits('update:visible', visible.value);
   document.removeEventListener('click', onclickDoc);
 }
 
@@ -97,6 +100,10 @@ function positionContent() {
   contentWrapper.value.style.left = `${diffPos[props.position]['left'] + window.scrollX}px`;
   contentWrapper.value.style.top = `${diffPos[props.position]['top'] + window.scrollY}px`;
 }
+
+watch(() => props.visible, (val) => {
+  visible.value = val;
+});
 
 </script>
 
