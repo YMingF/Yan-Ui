@@ -44,8 +44,8 @@
 </template>
 
 <script lang='ts'>
-import Popover from '../../lib/popover/popover.vue';
-import Button from '../../lib/Button.vue';
+import Popover from '../../../lib/popover/popover.vue';
+import Button from '../../../lib/Button.vue';
 
 export default {
   components: {Button, Popover}

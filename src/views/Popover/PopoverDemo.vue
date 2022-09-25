@@ -1,20 +1,26 @@
 <template>
   <div id="popoverDemo">
-    <Demo :component="DiffPosition"></Demo>
+    <Demo :component="DiffPosition" :desc-component="DiffPosDesc"></Demo>
   </div>
   <!--  点击还是hover方式触发-->
-  <Demo :component="IsVisible"></Demo>
+  <Demo :component="DiffTrigger" :desc-component="DiffTriggerDesc"></Demo>
+  <!--  在浮窗内关闭-->
+  <Demo :component="IsVisible" :desc-component="isVisibleDesc"></Demo>
 </template>
 
 <script lang='ts'>
 import Demo from '../../components/common/Demo.vue';
-import DiffPosition from '../../components/Popover/diffPosition.vue';
-import IsVisible from '../../components/Popover/isVisible.vue';
+import DiffPosition from '../../components/Popover/DiffPosition/diffPosition.vue';
+import DiffPosDesc from '../../components/Popover/DiffPosition/DiffPosDesc.vue';
+import DiffTrigger from '../../components/Popover/DiffTrigger/DiffTrigger.vue';
+import DiffTriggerDesc from '../../components/Popover/DiffTrigger/DiffTriggerDesc.vue';
+import IsVisible from '../../components/Popover/isVisible/isVisible.vue';
+import isVisibleDesc from '../../components/Popover/isVisible/isVisibleDesc.vue';
 
 export default {
   components: {Demo},
   setup() {
-    return {DiffPosition, IsVisible};
+    return {DiffPosition, DiffPosDesc, IsVisible, isVisibleDesc, DiffTrigger, DiffTriggerDesc};
   }
 };
 </script>

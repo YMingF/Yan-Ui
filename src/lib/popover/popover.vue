@@ -46,10 +46,10 @@ onMounted(() => {
 // 组件挂载的时候需手动销毁事件
 onUnmounted(() => {
   if (props.trigger === 'click') {
-    popoverRef.value.removeEventListener('click', changeStatus);
+    popoverRef.value?.removeEventListener('click', changeStatus);
   } else {
-    popoverRef.value.removeEventListener('mouseenter', showContent);
-    popoverRef.value.removeEventListener('mouseleave', close);
+    popoverRef.value?.removeEventListener('mouseenter', showContent);
+    popoverRef.value?.removeEventListener('mouseleave', close);
   }
 });
 

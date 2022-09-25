@@ -36,7 +36,7 @@ $h: 32px;
 $border-color: #d9d9d9;
 $color: #333;
 $blue: #40a9ff;
-$radius: 4px;
+$radius: 2px;
 $red: red;
 $grey: grey;
 .gulu-button {
@@ -52,8 +52,9 @@ $grey: grey;
   color: $color;
   border: 1px solid $border-color;
   border-radius: $radius;
-  box-shadow: 0 1px 0 fade-out(black, 0.95);
-  transition: background 250ms;
+  box-shadow: 0 2px #00000004;
+  transition: all .3s cubic-bezier(.645, .045, .355, 1);
+  touch-action: manipulation;
 
   & + & {
     margin-left: 8px;
