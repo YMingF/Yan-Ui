@@ -8,6 +8,7 @@ import TabsDemo from './views/Tab/TabsDemo.vue';
 import InputDemo from './views/Input/InputDemo.vue';
 import TPDemo from './views/Typography/TPDemo.vue';
 import ToastDemo from './views/Toast/ToastDemo.vue';
+import CollapseDemo from './views/Collapse/CollapseDemo.vue'
 import PopoverDemo from './views/Popover/PopoverDemo.vue';
 import GridDemo from './views/Grid/GridDemo.vue';
 import {h} from 'vue';
@@ -40,7 +41,8 @@ export const router = createRouter({
         {path: 'typo', component: TPDemo},
         {path: 'grid', component: GridDemo},
         {path: 'toast', component: ToastDemo},
-        {path: 'popover', component: PopoverDemo}
+        {path: 'popover', component: PopoverDemo},
+        {path: 'collapse', component: CollapseDemo},
       ],
     },
   ],

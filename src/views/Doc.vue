@@ -44,6 +44,9 @@
             <li>
               <router-link to="/doc/popover">popover</router-link>
             </li>
+            <li>
+              <router-link to="/doc/collapse">collapse</router-link>
+            </li>
           </ol>
         </aside>
         <main>

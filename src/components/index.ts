@@ -11,6 +11,8 @@ import Row from '../lib/Grid/row.vue';
 import Col from '../lib/Grid/col.vue';
 import Typography from '../lib/typography/copyEditParagraph.vue';
 import Dialog from '../lib/Dialog.vue';
+import Collapse from '../lib/Collapse/collapse.vue';
+import CollapseItem from '../lib/Collapse/collapse-item.vue';
 
 const components: { [propName: string]: Component } = {
     ZPopover: Popover,
@@ -18,13 +20,15 @@ const components: { [propName: string]: Component } = {
     ZInput: Input,
     ZInputPassword: InputPassword,
     ZInputTextArea: InputTextArea,
-    ZSwitch:Switch,
-    ZTabs:Tabs,
-    ZTab:Tab,
-    ZRow:Row,
-    ZCol:Col,
-    ZTypography:Typography,
-    ZDialog:Dialog,
+    ZSwitch: Switch,
+    ZTabs: Tabs,
+    ZTab: Tab,
+    ZRow: Row,
+    ZCol: Col,
+    ZTypography: Typography,
+    ZDialog: Dialog,
+    ZCollapse: Collapse,
+    ZCollapseItem: CollapseItem,
 };
 export default {
     install: (Vue: App) => {
