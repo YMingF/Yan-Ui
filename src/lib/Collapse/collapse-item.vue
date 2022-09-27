@@ -17,28 +17,25 @@
 </template>
 
 <script lang='ts' setup>
-import {defineProps, onUnmounted, ref} from 'vue';
+import {defineEmits, defineProps, inject, onUnmounted, ref} from 'vue';
 import Mitt from '../../store/mitt.js';
 
 const props = defineProps({
   header: {type: String, required: true},
   itemKey: {type: Number, required: true}
 });
+const collapseId = inject('collapseId');
 const svgRef = ref<HTMLElement>();
 const isExtend = ref(false);
-
-Mitt.on('changeCollapseKey', listenCollapseKey);
+Mitt.on(`changeCollapseKey${collapseId}`, listenCollapseKey);
 
 function listenCollapseKey(val) {
-  isExtend.value = val === props.itemKey;
+  isExtend.value = val.includes(props.itemKey);
   setSvgAngle();
 }
 
 function toggle() {
-  isExtend.value = !isExtend.value;
-  if (isExtend.value) {
-    Mitt.emit('changeCollapseKey', props.itemKey);
-  }
+  Mitt.emit(isExtend.value ? `closeCollapse${collapseId}` : `openCollapse${collapseId}`, props.itemKey);
   setSvgAngle();
 }
 
@@ -47,7 +44,9 @@ function setSvgAngle() {
 }
 
 onUnmounted(() => {
-  Mitt.off('changeCollapseKey', listenCollapseKey);
+  Mitt.off(`closeCollapse${collapseId}`);
+  Mitt.off(`openCollapse${collapseId}`);
+  Mitt.off(`changeCollapseKey${collapseId}`, listenCollapseKey);
 });
 
 </script>
