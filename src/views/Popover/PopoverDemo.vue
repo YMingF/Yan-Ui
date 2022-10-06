@@ -67,10 +67,4 @@ const tableContent = [
   }
 }
 
-// API部分
-#api-container {
-  .title_api {
-    margin: 38px 0 14px 0;
-  }
-}
 </style>
