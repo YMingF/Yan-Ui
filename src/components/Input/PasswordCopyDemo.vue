@@ -7,18 +7,9 @@
   </div>
 </template>
 
-<script lang='ts'>
+<script lang='ts' setup>
 import {ref} from 'vue';
 
-export default {
-  setup() {
-    const textValue = ref('');
-    return {
-      textValue
-    };
-  }
-};
+const textValue = ref('');
 </script>
 
-<style lang='scss' scoped>
-</style>
