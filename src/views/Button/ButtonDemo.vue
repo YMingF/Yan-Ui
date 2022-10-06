@@ -20,20 +20,31 @@
   <div>
     <Demo :component="ButtonDemoLoading"></Demo>
   </div>
+  <!--  API详情展示-->
+  <section id="api-container">
+    <h2 class="title_api">API</h2>
+    <api-table :head-title="titleArr" :body-data="tableContent"></api-table>
+  </section>
 </template>
-<script lang="ts">
-import Button from '../../lib/Button.vue';
+<script lang="ts" setup>
 import Demo from '../../components/common/Demo.vue';
 import ButtonDemoTheme from '../../components/Button/ButtonDemoTheme.vue';
 import ButtonDemoSize from '../../components/Button/ButtonDemoSize.vue';
 import ButtonDemoLevel from '../../components/Button/ButtonDemoLevel.vue';
 import ButtonDemoDisabled from '../../components/Button/ButtonDemoDisabled.vue';
 import ButtonDemoLoading from '../../components/Button/ButtonDemoLoading.vue';
+import ApiTable from '../../components/common/ApiTableContainer.vue';
 
-export default {
-  components: {Button, Demo},
-  setup() {
-    return {ButtonDemoTheme, ButtonDemoSize, ButtonDemoLoading, ButtonDemoLevel, ButtonDemoDisabled};
-  },
-};
+const titleArr = ['参数', '说明', '类型', '默认值'];
+const tableContent = [
+  ['theme', `按钮类型`, 'string', `<code>button</code>`
+  ],
+  [`size`,
+    `按钮尺寸`,
+    `string`,
+    `<code>normal</code>`],
+  [`level`, `按钮样式`, `string`, `<code>normal</code>`],
+  [`disabled`, `按钮禁用`, `boolean`, `<code>false</code>`],
+  [`loading`, `按钮加载`, `boolean`, `<code>false</code>`],
+];
 </script>
