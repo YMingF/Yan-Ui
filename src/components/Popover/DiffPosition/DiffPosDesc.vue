@@ -9,7 +9,3 @@
 <script lang='ts' setup>
 import ComponentDesc from '../../common/ComponentDesc.vue';
 </script>
-
-<style lang='scss' scoped>
-
-</style>

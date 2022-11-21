@@ -13,7 +13,9 @@ import Typography from '../lib/typography/copyEditParagraph.vue';
 import Dialog from '../lib/Dialog.vue';
 import Collapse from '../lib/Collapse/collapse.vue';
 import CollapseItem from '../lib/Collapse/collapse-item.vue';
-
+import AlertComponent from '../lib/Alert/alert.vue';
+import Demo from './common/Demo.vue';
+import ApiTable from './common/ApiTableContainer.vue';
 const components: { [propName: string]: Component } = {
     ZPopover: Popover,
     ZButton: Button,
@@ -29,6 +31,9 @@ const components: { [propName: string]: Component } = {
     ZDialog: Dialog,
     ZCollapse: Collapse,
     ZCollapseItem: CollapseItem,
+    ZAlert: AlertComponent,
+    Demo,
+    ApiTable
 };
 export default {
     install: (Vue: App) => {

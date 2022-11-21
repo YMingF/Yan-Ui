@@ -24,18 +24,6 @@
               <router-link to="/doc/button">Button 组件</router-link>
             </li>
             <li>
-              <router-link to="/doc/switch">Switch 组件</router-link>
-            </li>
-            <li>
-              <router-link to="/doc/dialog">Dialog 组件</router-link>
-            </li>
-            <li>
-              <router-link to="/doc/tabs">Tabs 组件</router-link>
-            </li>
-            <li>
-              <router-link to="/doc/typo">Typography 组件</router-link>
-            </li>
-            <li>
               <router-link to="/doc/grid">Grid 栅格</router-link>
             </li>
             <li>
@@ -46,6 +34,21 @@
             </li>
             <li>
               <router-link to="/doc/collapse">collapse</router-link>
+            </li>
+            <li>
+              <router-link to="/doc/alert">Alert 提示</router-link>
+            </li>
+            <li>
+              <router-link to="/doc/switch">Switch 组件</router-link>
+            </li>
+            <li>
+              <router-link to="/doc/dialog">Dialog 组件</router-link>
+            </li>
+            <li>
+              <router-link to="/doc/tabs">Tabs 组件</router-link>
+            </li>
+            <li>
+              <router-link to="/doc/typo">Typography 组件</router-link>
             </li>
           </ol>
         </aside>

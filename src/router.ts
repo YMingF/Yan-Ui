@@ -11,10 +11,14 @@ import ToastDemo from './views/Toast/ToastDemo.vue';
 import CollapseDemo from './views/Collapse/CollapseDemo.vue'
 import PopoverDemo from './views/Popover/PopoverDemo.vue';
 import GridDemo from './views/Grid/GridDemo.vue';
+import AlertDemo from './views/Alert/AlertDemo.vue';
 import {h} from 'vue';
 import Markdown from './components/common/Markdown.vue';
+// @ts-ignore
 import intro from './markdown/intro.md';
+// @ts-ignore
 import start from './markdown/start.md';
+// @ts-ignore
 import install from './markdown/install.md';
 
 const md = string => {
@@ -43,6 +47,7 @@ export const router = createRouter({
         {path: 'toast', component: ToastDemo},
         {path: 'popover', component: PopoverDemo},
         {path: 'collapse', component: CollapseDemo},
+        {path: 'alert', component: AlertDemo},
       ],
     },
   ],
