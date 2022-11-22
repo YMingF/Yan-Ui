@@ -44,10 +44,10 @@ const classes = computed(() => {
 const alertRef = ref<HTMLElement>();
 const iconHref = computed(() => {
   const iconMap = {
-    success: 'icon-alert-success',
-    warning: 'icon-alert-warning',
-    info: 'icon-alert-info',
-    error: 'icon-alert-error'
+    success: 'icon-circle-success',
+    warning: 'icon-warning',
+    info: 'icon-info',
+    error: 'icon-error'
   };
   return `#${iconMap[props.type]}`;
 });
