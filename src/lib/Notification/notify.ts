@@ -52,6 +52,7 @@ notificationsTypes.forEach(type => {
 function vmRender(container, options) {
     const id = `notification_${seed++}`;
     zIndex++;
+    const userClose = options.close;
     const position = options.position || 'top-right';
     let verticalHeight = options.offset || 0;
     const pageHeight = document.body.clientHeight;
@@ -75,7 +76,7 @@ function vmRender(container, options) {
     }
 
     const onClose = () => {
-        close(id, position);
+        close(id, position, userClose);
     };
     const props = {...options, id, close: onClose, offset: verticalHeight, zIndex, position};
     const vm = createVNode(NotifyTemp, props);
@@ -83,7 +84,7 @@ function vmRender(container, options) {
     notifications[position].push(vm);
 }
 
-function close(id, position) {
+function close(id, position, userClose) {
     const originNotifications = notifications[position];
     const idx = originNotifications.findIndex(node => {
         return node.component?.props.id === id;
@@ -95,6 +96,7 @@ function close(id, position) {
     if (!vm) {
         return;
     }
+    userClose?.(vm);
     const removedHeight = vm.el?.offsetHeight;
     const attribute = position.split('-')[0];
     originNotifications.splice(idx, 1);

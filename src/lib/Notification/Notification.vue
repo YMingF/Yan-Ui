@@ -34,7 +34,7 @@ const props = defineProps({
   close: Function, // 关闭提示框时的回调函数
   duration: {type: Number, 'default': 4000}, // 提示框存续时间
   message: String, // 标题下的普通文本信息
-  offset: {type: Number}, // 可控制一开始距离顶端的垂直距离
+  offset: {type: Number, default: 0}, // 可控制一开始距离顶端的垂直距离
   position: {type: String, values: ['top-right', 'bottom-right', 'top-left', 'bottom-left'], 'default': 'top-right'},
   showClose: {type: Boolean, 'default': true},
   title: String, // 标题

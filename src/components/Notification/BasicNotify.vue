@@ -10,7 +10,7 @@ import Notify from '../../lib/Notification/notify';
 function autoClose() {
   Notify({
     title: '自动关闭',
-    message: 'simple message'
+    message: 'simple message',
   });
 }
 
