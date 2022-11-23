@@ -14,15 +14,13 @@
 </template>
 
 <script lang='ts' setup>
-import {computed, onMounted, ref} from 'vue';
-
+import {computed, ref} from 'vue';
 const props = defineProps({
   text: {type: String, 'default': ''},
   background: {type: String, 'default': ''},
   svg: {type: String, 'default': ''}
 });
 const showMask = ref(true);
-const iconRef = ref(null);
 const computedStyle = computed(() => {
   return {
     'background': props.background
@@ -33,9 +31,6 @@ function close() {
   showMask.value = false;
 }
 
-onMounted(() => {
-  iconRef.value.classList.add('z-loading-icon');
-});
 </script>
 
 <style lang='scss' scoped>
