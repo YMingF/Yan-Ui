@@ -13,6 +13,7 @@ import PopoverDemo from './views/Popover/PopoverDemo.vue';
 import GridDemo from './views/Grid/GridDemo.vue';
 import AlertDemo from './views/Alert/AlertDemo.vue';
 import NotificationDemo from './views/Notification/NotificationDemo.vue';
+import LoadingDemo from './views/Loading/LoadingDemo.vue';
 import {h} from 'vue';
 import Markdown from './components/common/Markdown.vue';
 // @ts-ignore
@@ -49,7 +50,8 @@ export const router = createRouter({
         {path: 'popover', component: PopoverDemo},
         {path: 'collapse', component: CollapseDemo},
         {path: 'alert', component: AlertDemo},
-        {path: 'notification', component: NotificationDemo}
+        {path: 'notification', component: NotificationDemo},
+        {path: 'loading', component: LoadingDemo},
       ],
     },
   ],

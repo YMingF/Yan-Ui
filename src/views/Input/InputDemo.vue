@@ -9,14 +9,9 @@
     <!--    自适应多行文本-->
     <Demo :component="TextAreaInput" :desc-component="textareaDesc"/>
     <!--  API详情展示-->
-    <section id="api-container">
-      <h2 class="title_api">API</h2>
-      <h3 class="title_row">Input</h3>
-      <api-table :head-title="titleArr" :body-data="inputTableContent"></api-table>
+    <api-table index-title="API" index-sub-title="Input" :head-title="titleArr" :body-data="inputTableContent"></api-table>
 
-      <h3 class="title_row">TextArea</h3>
-      <api-table :head-title="titleArr" :body-data="textareaTableContent"></api-table>
-    </section>
+    <api-table index-sub-title="TextArea" :head-title="titleArr" :body-data="textareaTableContent"></api-table>
   </div>
 </template>
 

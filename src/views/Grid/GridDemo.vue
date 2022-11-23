@@ -25,14 +25,9 @@
     </div>
   </section>
   <!--  API详情展示-->
-  <section id="api-container">
-    <h2 class="title_api">API</h2>
-    <h3 class="title_row">Row</h3>
-    <api-table :head-title="titleArr" :body-data="rowTableContent"></api-table>
+  <api-table index-title="API" index-sub-title="Row" :head-title="titleArr" :body-data="rowTableContent"></api-table>
 
-    <h3 class="title_row">Col</h3>
-    <api-table :head-title="titleArr" :body-data="colTableContent"></api-table>
-  </section>
+  <api-table index-sub-title="Col" :head-title="titleArr" :body-data="colTableContent"></api-table>
 </template>
 
 <script lang='ts' setup>

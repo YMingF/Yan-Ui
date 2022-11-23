@@ -29,10 +29,11 @@
             <li>
               <router-link to="/doc/dialog">Dialog 组件</router-link>
             </li>
-
-
             <li>
               <router-link to="/doc/grid">Grid 栅格</router-link>
+            </li>
+            <li>
+              <router-link to="/doc/loading">Loading 加载</router-link>
             </li>
             <li>
               <router-link to="/doc/notification">Notification 通知</router-link>

@@ -10,10 +10,7 @@
   <!--  设置是否自动关闭-->
   <Demo :component="AutoClose"></Demo>
   <!--  API详情展示-->
-  <section id="api-container">
-    <h2 class="title_api">API</h2>
-    <api-table :head-title="titleArr" :body-data="tableContent"></api-table>
-  </section>
+  <api-table  index-title="API"  :head-title="titleArr" :body-data="tableContent"></api-table>
 </template>
 
 <script lang='ts' setup>

@@ -1,24 +1,30 @@
 <template>
-  <table class="apiTable">
-    <thead>
-    <tr>
-      <th v-for="item in headTitle" :key="item">{{ item }}</th>
-    </tr>
-    </thead>
+  <section>
+    <h2 class="title_api">{{ indexTitle }}</h2>
+    <h3 class="title_row">{{ indexSubTitle }}</h3>
+    <table class="apiTable">
+      <thead>
+      <tr>
+        <th v-for="item in headTitle" :key="item">{{ item }}</th>
+      </tr>
+      </thead>
 
-    <tbody>
-    <!--      align-->
-    <tr v-for="data in bodyData">
-      <td v-for="item in data" :key="item" v-html="item"></td>
-    </tr>
+      <tbody>
+      <!--      align-->
+      <tr v-for="data in bodyData">
+        <td v-for="item in data" :key="item" v-html="item"></td>
+      </tr>
 
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </section>
 </template>
 
 <script lang='ts'>
 export default {
   props: {
+    indexTitle: String,
+    indexSubTitle: String,
     headTitle: Array,
     bodyData: Array
   }
@@ -26,6 +32,18 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+.title_api {
+  margin-top: 2.25rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.3rem;
+  line-height: 1.25;
+  font-size: 1.65rem;
+}
+
+.title_row {
+  margin: 28px 0 18px 0
+}
+
 .apiTable {
   width: 100%;
   border: 1px solid #f0f0f0;
