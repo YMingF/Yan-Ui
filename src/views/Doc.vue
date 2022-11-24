@@ -96,7 +96,7 @@
   > .content {
     flex-grow: 1;
     padding-top: 60px;
-    padding-left: 156px;
+    padding-left: 200px;
     @media (max-width: 500px) {
       padding-left: 0;
     }
@@ -118,7 +118,7 @@
 
 aside {
   background: #fff;
-  width: 150px;
+  width: 200px;
   position: fixed;
   top: 0;
   left: 0;
@@ -132,6 +132,7 @@ aside {
   }
 
   > ol {
+
     > li {
       position: relative;
 
