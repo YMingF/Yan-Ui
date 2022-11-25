@@ -182,38 +182,28 @@ onMounted(() => {
       height: 18px;
     }
   }
+
+  &.fade-enter-from {
+    right: -300px;
+    opacity: 0;
+  }
+
+  &.fade-enter-to {
+    right: 16px;
+    opacity: 1;
+  }
+
+  &.fade-enter-active {
+    transition: all 0.3s linear;
+  }
+
+  //
+  &.fade-leave-to {
+    opacity: 0;
+  }
+
+  &.fade-leave-active {
+    transition: all 0.3s ease-out;
+  }
 }
-
-/*
-  进入和离开动画可以使用不同
-  持续时间和速度曲线。
-*/
-
-.fade-enter-from {
-  right: -300px;
-  opacity: 0;
-}
-
-.fade-enter-to {
-  right: 16px;
-  opacity: 1;
-}
-
-.fade-enter-active {
-  transition: all 0.3s linear;
-}
-
-//
-.fade-leave-to {
-  opacity: 0;
-}
-
-.fade-leave-active {
-  transition: all 1s ease-out;
-}
-
-.fade-leave-active {
-  transition: all 1s step-start
-}
-
 </style>
