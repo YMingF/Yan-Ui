@@ -16,6 +16,8 @@ import CollapseItem from '../lib/Collapse/collapse-item.vue';
 import AlertComponent from '../lib/Alert/alert.vue';
 import CheckBox from '../lib/CheckBox/CheckBox.vue';
 import CheckBoxGroup from '../lib/CheckBox/CheckBoxGroup.vue';
+import Carousel from '../lib/Carousel/Carousel.vue';
+import CarouselItem from '../lib/Carousel/CarouselItem.vue';
 import Demo from './common/Demo.vue';
 import ApiTable from './common/ApiTableContainer.vue';
 
@@ -37,6 +39,8 @@ const components: { [propName: string]: Component } = {
     ZAlert: AlertComponent,
     ZCheckBox: CheckBox,
     ZCheckBoxGroup: CheckBoxGroup,
+    ZCarousel: Carousel,
+    ZCarouselItem: CarouselItem,
     Demo,
     ApiTable
 };

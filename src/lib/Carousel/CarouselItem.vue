@@ -1,0 +1,31 @@
+<template>
+  <div ref="carouselItemRef" class="z-carousel-item" :style="customStyle">
+    <slot/>
+  </div>
+</template>
+
+<script lang='ts' setup>
+import {computed} from 'vue';
+import {useCarouselItem} from '../../use/carousel/useCarouselItem';
+
+const {carouselItemRef, translate} = useCarouselItem();
+
+const customStyle = computed(() => {
+  const transform = `translateX(${translate.value}px)`;
+  return {transform};
+});
+</script>
+
+<style lang='scss' scoped>
+.z-carousel-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  overflow: hidden;
+  background-color: green;
+  transition: all 0.5s linear;
+}
+</style>
