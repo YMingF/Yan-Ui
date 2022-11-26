@@ -146,10 +146,6 @@ const {isArrowShow, showArrow, hideArrow, prev, next} = useArrowDisplay();
 
 onMounted(() => {
   startTimer();
-  // if (props.indicatorPosition === 'outside') {
-  //   carouselIndicatorRef.value.style.marginTop = carouselContainerRef.value.clientHeight + 'px';
-  //
-  // }
 });
 </script>
 

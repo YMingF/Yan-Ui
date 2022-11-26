@@ -9,7 +9,7 @@ export function useCarouselItem() {
     const isAnimated = ref(false);
     watch(() => activeKey.value, () => {
         translate.value = calTranslate(currentIndex, activeKey.value, slotLength);
-    });
+    }, {immediate: true});
 
     function calTranslate(index, activeIndex, slotLength) {
         isAnimated.value = index === activeIndex;
