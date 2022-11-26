@@ -1,5 +1,5 @@
 <template>
-  <div ref="carouselItemRef" class="z-carousel-item" :style="customStyle">
+  <div ref="carouselItemRef" class="z-carousel-item" :class="{'isAnimated':isAnimated}" :style="customStyle">
     <slot/>
   </div>
 </template>
@@ -8,7 +8,7 @@
 import {computed} from 'vue';
 import {useCarouselItem} from '../../use/carousel/useCarouselItem';
 
-const {carouselItemRef, translate} = useCarouselItem();
+const {carouselItemRef, translate, isAnimated} = useCarouselItem();
 
 const customStyle = computed(() => {
   const transform = `translateX(${translate.value}px)`;
@@ -26,6 +26,10 @@ const customStyle = computed(() => {
   display: inline-block;
   overflow: hidden;
   background-color: green;
-  transition: all 0.5s linear;
+
+  &.isAnimated {
+    transition: transform 0.5s ease-in-out;
+  }
+
 }
 </style>

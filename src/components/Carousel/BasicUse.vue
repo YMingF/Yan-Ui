@@ -1,7 +1,7 @@
 <demo>基础用法</demo>
 <template>
   <z-carousel>
-    <z-carousel-item v-for="item in 4" :key="item">
+    <z-carousel-item v-for="item in 5" :key="item">
       <h3 style="text-align: center;vertical-align: middle;">{{ item }}</h3>
     </z-carousel-item>
   </z-carousel>
