@@ -8,10 +8,11 @@
 import {computed} from 'vue';
 import {useCarouselItem} from '../../use/carousel/useCarouselItem';
 
-const {carouselItemRef, translate, isAnimated} = useCarouselItem();
+const {carouselItemRef, translate, isAnimated, isVertical} = useCarouselItem();
 
 const customStyle = computed(() => {
-  const transform = `translateX(${translate.value}px)`;
+  const direction = isVertical ? 'Y' : 'X';
+  const transform = `translate${direction}(${translate.value}px)`;
   return {transform};
 });
 </script>

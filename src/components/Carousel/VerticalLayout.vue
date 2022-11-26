@@ -1,6 +1,6 @@
-<demo>基础用法</demo>
+<demo>垂直布局</demo>
 <template>
-  <z-carousel height="150">
+  <z-carousel direction="vertical">
     <z-carousel-item v-for="item in 5" :key="item">
       <h3 style="text-align: center;vertical-align: middle;">{{ item }}</h3>
     </z-carousel-item>

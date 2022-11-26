@@ -1,6 +1,12 @@
-<demo>基础用法</demo>
+<demo>切换箭头</demo>
 <template>
-  <z-carousel height="150">
+  <z-carousel arrow="always">
+    <z-carousel-item v-for="item in 5" :key="item">
+      <h3 style="text-align: center;vertical-align: middle;">{{ item }}</h3>
+    </z-carousel-item>
+  </z-carousel>
+  <div style="width: 100%;height: 100px;"></div>
+  <z-carousel arrow="never">
     <z-carousel-item v-for="item in 5" :key="item">
       <h3 style="text-align: center;vertical-align: middle;">{{ item }}</h3>
     </z-carousel-item>

@@ -6,7 +6,6 @@ export function useCarouselItem() {
     const carouselItemRef = ref<HTMLDivElement>();
     const currentIndex = Number(getCurrentInstance()?.['vnode']['key']);
     const translate = ref(0);
-    let displayArr = Array.from(new Array(slotLength + 1).keys()).slice(1);
     const isAnimated = ref(false);
     watch(() => activeKey.value, () => {
         translate.value = calTranslate(currentIndex, activeKey.value, slotLength);
@@ -44,6 +43,6 @@ export function useCarouselItem() {
 
     }
 
-    return {carouselItemRef, translate, isAnimated};
+    return {carouselItemRef, translate, isAnimated,isVertical};
 }
 

@@ -1,3 +1,4 @@
+<demo>基础用法</demo>
 <template>
   <component-desc>
     <p>
