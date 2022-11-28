@@ -4,10 +4,9 @@
       <TopNav/>
       <div class="banner">
         <h1>ZUI</h1>
-        <h2>一个简易的UI框架</h2>
+        <h2>基于 Vue 3，面向开发者的组件库</h2>
         <p class="actions">
-          <a href="https://github.com/YMingF/Yan-Ui">GitHub</a>
-          <router-link to="/doc">开始使用</router-link>
+          <router-link to="/doc">查看详情</router-link>
         </p>
       </div>
     </div>
@@ -18,7 +17,7 @@
             <use xlink:href="#icon-vue"></use>
           </svg>
           <h3>基于 Vue 3</h3>
-          <p>骄傲地使用了 Vue 3 Composition API</p>
+          <p>使用了 Vue 3 Composition API</p>
         </li>
         <li>
           <svg>

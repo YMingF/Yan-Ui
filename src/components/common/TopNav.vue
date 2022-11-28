@@ -2,13 +2,17 @@
   <div class="topNav">
     <router-link to="/" class="logo">
       <svg class="icon">
-        <use xlink:href="#icon-banner"></use>
+        <use xlink:href="#icon-home"></use>
       </svg>
     </router-link>
 
     <ul class="menu">
       <li>
-        <router-link to="/doc">文档</router-link>
+        <a href="https://github.com/YMingF/Yan-Ui" target="_blank">
+          <svg class="githubIcon">
+            <use xlink:href="#icon-github"></use>
+          </svg>
+        </a>
       </li>
     </ul>
     <svg v-if="toggleMenuButtonVisible" class="toggleAside" @click="toggleMenu">
@@ -72,8 +76,15 @@ $wordColor: #007974;
     display: flex;
     white-space: nowrap;
     flex-wrap: nowrap;
+
     > li {
       margin: 0 1em;
+    }
+
+    .githubIcon {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
     }
   }
 
