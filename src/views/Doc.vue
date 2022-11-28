@@ -67,6 +67,9 @@
                 <li>
                   <router-link to="/doc/tabs">Tabs 标签页</router-link>
                 </li>
+                <li>
+                  <router-link to="/doc/backTop">BackTop 回到顶部</router-link>
+                </li>
               </ol>
 
             </section>

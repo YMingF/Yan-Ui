@@ -16,6 +16,7 @@ import NotificationDemo from './views/Notification/NotificationDemo.vue';
 import LoadingDemo from './views/Loading/LoadingDemo.vue';
 import CheckBoxDemo from './views/CheckBox/CheckBoxDemo.vue';
 import CarouselDemo from './views/Carousel/CarouselDemo.vue';
+import BackTopDemo from './views/Backtop/BackTopDemo.vue';
 import {h} from 'vue';
 import Markdown from './components/common/Markdown.vue';
 // @ts-ignore
@@ -55,7 +56,8 @@ export const router = createRouter({
         {path: 'notification', component: NotificationDemo},
         {path: 'loading', component: LoadingDemo},
         {path: 'checkbox', component: CheckBoxDemo},
-        {path: 'carousel', component: CarouselDemo}
+        {path: 'carousel', component: CarouselDemo},
+        {path: 'backTop', component: BackTopDemo}
       ],
     },
   ],

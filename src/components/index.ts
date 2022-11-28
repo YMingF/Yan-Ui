@@ -18,6 +18,7 @@ import CheckBox from '../lib/CheckBox/CheckBox.vue';
 import CheckBoxGroup from '../lib/CheckBox/CheckBoxGroup.vue';
 import Carousel from '../lib/Carousel/Carousel.vue';
 import CarouselItem from '../lib/Carousel/CarouselItem.vue';
+import BackTop from '../lib/BackTop/BackTop.vue';
 import Demo from './common/Demo.vue';
 import ApiTable from './common/ApiTableContainer.vue';
 
@@ -41,6 +42,7 @@ const components: { [propName: string]: Component } = {
     ZCheckBoxGroup: CheckBoxGroup,
     ZCarousel: Carousel,
     ZCarouselItem: CarouselItem,
+    ZBackTop: BackTop,
     Demo,
     ApiTable
 };

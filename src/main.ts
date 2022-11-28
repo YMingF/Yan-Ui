@@ -9,9 +9,11 @@ import toast from './plugin/toast.js';
 import globalComponents from './components/index';
 import {createPinia} from 'pinia';
 import {LoadingDirective} from './lib/Loading/Loading';
+import _ from 'lodash';
 
 const pinia = createPinia();
 const app = createApp(App);
+app.config.globalProperties.lodash = _;
 app.directive('loading', LoadingDirective);
 app.component('Markdown', Markdown);
 app.use(globalComponents);

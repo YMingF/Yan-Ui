@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "github-markdown-css": "^5.1.0",
+    "lodash": "^4.17.21",
     "mitt": "^3.0.0",
     "pinia": "^2.0.22",
     "prismjs": "^1.28.0",
