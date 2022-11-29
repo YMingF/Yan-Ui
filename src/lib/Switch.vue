@@ -18,17 +18,12 @@ const props = defineProps({
   inactiveText: {type: String, default: ''},
   disabled: {type: Boolean, default: false},
   size: {type: String, values: ['large', 'small'], default: ''},
-  activeValue: {type: [Boolean, String, Number]},
-  inactiveValue: {type: [Boolean, String, Number]}
+  activeValue: {type: [Boolean, String, Number], default: true},
+  inactiveValue: {type: [Boolean, String, Number], default: false}
 });
-const hasActiveVal = ref(props.activeValue || props.inactiveValue);
 const switchActive = ref();
 watchEffect(() => {
-  if (hasActiveVal.value) {
     switchActive.value = props.modelValue === props.activeValue;
-  } else {
-    switchActive.value = props.modelValue;
-  }
 });
 const switchBoxClasses = computed(() => {
   return {
@@ -40,14 +35,10 @@ const switchBoxClasses = computed(() => {
 const toggle = () => {
   if (props.disabled) return;
   switchActive.value = !switchActive.value;
-  if (hasActiveVal.value) {
-    const emitVal = switchActive.value ? props.activeValue : props.inactiveValue;
-    emits('update:modelValue', emitVal);
-    emits('change', emitVal);
-    return;
-  }
-  emits('update:modelValue', switchActive.value);
-  emits('change', switchActive.value);
+  const emitVal = switchActive.value ? props.activeValue : props.inactiveValue;
+  emits('update:modelValue', emitVal);
+  emits('change', emitVal);
+
 };
 </script>
 

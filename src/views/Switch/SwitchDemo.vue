@@ -31,7 +31,9 @@ const tableContent = [
   [`disabled`, `是否禁用`, `boolean`, `<code>--</code>`, `<code>false</code>`],
   [`size`, `switch 的大小`, `string`, `<code>large/small</code>`, `<code>''</code>`],
   [`active-text`, `switch 打开时的文字描述`, `string`, `<code>--</code>`, `<code>--</code>`],
-  [`inactive-text`, `switch 的状态为 off 时的文字描述`, `string`, `<code>--</code>`, `<code>--</code>`]
+  [`inactive-text`, `switch 的状态为 off 时的文字描述`, `string`, `<code>--</code>`, `<code>--</code>`],
+  [`active-value`, `switch 状态为 on 时的值`, `boolean / string / number`, `<code>--</code>`, `<code>true</code>`],
+  [`inactive-value`, `switch的状态为 off 时的值`, `boolean / string / number`, `<code>--</code>`, `<code>false</code>`]
 ];
 const eventArr = ['事件名', '说明', '回调参数'];
 const eventContent = [
