@@ -38,10 +38,14 @@ export default {
   padding-bottom: 0.3rem;
   line-height: 1.25;
   font-size: 1.65rem;
+  font-weight: 600;
+  color: #606266;
 }
 
 .title_row {
-  margin: 28px 0 18px 0
+  margin: 28px 0 18px 0;
+  font-weight: 500;
+  color: #606266;
 }
 
 .apiTable {
