@@ -21,12 +21,3 @@
     </z-button>
   </z-popover>
 </template>
-
-<script lang='ts'>
-export default {
-  components: {}
-};
-</script>
-
-<style lang='scss' scoped>
-</style>

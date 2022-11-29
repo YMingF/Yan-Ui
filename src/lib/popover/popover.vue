@@ -108,7 +108,7 @@ watch(() => props.visible, (val) => {
 </script>
 
 <style lang='scss' scoped>
-$border-radius: 2px;
+$border-radius: 4px;
 #popover {
   display: inline-block;
   vertical-align: top;
@@ -125,11 +125,12 @@ $border-radius: 2px;
   z-index: 999;
   border-radius: $border-radius;
   box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014, 0 9px 28px 8px #0000000d;
-  padding: 12px 16px;
-  color: #000000d9;
-  background-color: #fff;
+  padding: 8px 10px;
+  color: #fff;
+  background-color: #000000d9;
   max-width: 20em;
   word-break: break-all;
+  font-size: 14px;
 
   &::before, &::after {
     content: '';
@@ -148,12 +149,12 @@ $border-radius: 2px;
       top: 100%;
       left: 10%;
       transform: translateX(-50%);
-      border-top-color: lightgray;
+      border-top-color: #fff;
     }
 
     &::after {
       top: calc(100% - 1px);
-      border-top-color: white;
+      border-top-color: #000000d9;
     }
   }
 
@@ -168,7 +169,7 @@ $border-radius: 2px;
 
     &::after {
       transform: translateY(-98%);
-      border-bottom-color: white;
+      border-bottom-color: #000000d9;
     }
   }
 
@@ -183,7 +184,7 @@ $border-radius: 2px;
     }
 
     &::after {
-      border-right-color: white;
+      border-right-color: #000000d9;
     }
   }
 
@@ -199,7 +200,7 @@ $border-radius: 2px;
     }
 
     &::after {
-      border-left-color: white;
+      border-left-color: #000000d9;
     }
   }
 }

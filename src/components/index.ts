@@ -21,6 +21,7 @@ import CarouselItem from '../lib/Carousel/CarouselItem.vue';
 import BackTop from '../lib/BackTop/BackTop.vue';
 import Demo from './common/Demo.vue';
 import ApiTable from './common/ApiTableContainer.vue';
+import ComponentDesc from './common/ComponentDesc.vue';
 
 const components: { [propName: string]: Component } = {
     ZPopover: Popover,
@@ -44,7 +45,8 @@ const components: { [propName: string]: Component } = {
     ZCarouselItem: CarouselItem,
     ZBackTop: BackTop,
     Demo,
-    ApiTable
+    ApiTable,
+    ComponentDesc
 };
 export default {
     install: (Vue: App) => {

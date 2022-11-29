@@ -10,7 +10,28 @@
       <component :is="descComponent"></component>
     </div>
     <div class="demo-actions">
-      <Button @click="codeVisible=!codeVisible">查看代码</Button>
+
+      <z-popover position="bottom" :trigger="'hover'">
+        <template #content>
+          {{ '复制代码 ' }}
+        </template>
+        <i @click.stop="copyCode">
+          <svg>
+            <use xlink:href="#icon-copy"></use>
+          </svg>
+        </i>
+      </z-popover>
+      <z-popover position="bottom" :trigger="'hover'">
+        <template #content>
+          {{ '查看源代码 ' }}
+        </template>
+        <i @click="codeVisible=!codeVisible">
+          <svg>
+            <use xlink:href="#icon-code"></use>
+          </svg>
+        </i>
+      </z-popover>
+
     </div>
     <div v-if="codeVisible" class="demo-code">
         <pre class="language-html"
@@ -23,6 +44,7 @@
 import Button from '../../lib/Button.vue';
 import 'prismjs';
 import {computed, ref} from 'vue';
+import Notify from '../../lib/Notification/notify';
 // 适应这个库的写法
 const Prism = (window as any).Prism;
 export default {
@@ -38,7 +60,30 @@ export default {
       return Prism.highlight((props.component as any).__sourceCode, Prism.languages.javascript, 'javascript');
     });
     const codeVisible = ref(false);
-    return {Prism, html, codeVisible};
+
+    function copyCode() {
+      let textarea = document.createElement('textarea');
+      document.body.appendChild(textarea);
+      // 隐藏此输入框
+      textarea.style.position = 'fixed';
+      textarea.style.clip = 'rect(0 0 0 0)';
+      textarea.style.top = '10px';
+      // 赋值
+      textarea.value = (props.component as any).__sourceCode;
+      // 选中
+      textarea.select();
+      // 复制
+      document.execCommand('copy', true);
+      // 移除输入框
+      document.body.removeChild(textarea);
+      Notify({
+        message: '复制成功',
+        type: 'success',
+        duration: 2000
+      });
+    }
+
+    return {Prism, html, codeVisible, copyCode};
   },
 };
 </script>
@@ -60,8 +105,29 @@ $border-color: #d9d9d9;
   }
 
   &-actions {
-    padding: 8px 16px;
+    padding: 8px 40px;
     border-top: 1px dashed $border-color;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    i {
+      margin: 0 0.5rem;
+      cursor: pointer;
+      vertical-align: middle;
+
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
+      fill: #999;
+
+      &:hover {
+        fill: #333
+      }
+    }
+
   }
 
   &-code {

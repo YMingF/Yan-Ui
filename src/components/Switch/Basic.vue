@@ -2,7 +2,7 @@
 常规用法
 </demo>
 <template>
-  <z-switch v-model:value="bool"></z-switch>
+  <z-switch v-model="bool"></z-switch>
 </template>
 
 <script lang='ts' setup>

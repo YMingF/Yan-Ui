@@ -1,7 +1,7 @@
 import {createRouter, createWebHashHistory} from 'vue-router';
 import Home from './views/Home.vue';
 import Doc from './views/Doc.vue';
-import SwitchDemo from './lib/Switch/SwitchDemo.vue';
+import SwitchDemo from './views/Switch/SwitchDemo.vue';
 import ButtonDemo from './views/Button/ButtonDemo.vue';
 import DialogDemo from './components/Dialog/DialogDemo.vue';
 import TabsDemo from './views/Tab/TabsDemo.vue';
@@ -17,6 +17,7 @@ import LoadingDemo from './views/Loading/LoadingDemo.vue';
 import CheckBoxDemo from './views/CheckBox/CheckBoxDemo.vue';
 import CarouselDemo from './views/Carousel/CarouselDemo.vue';
 import BackTopDemo from './views/Backtop/BackTopDemo.vue';
+import SelectDemo from './views/Select/SelectDemo.vue';
 import {h} from 'vue';
 import Markdown from './components/common/Markdown.vue';
 // @ts-ignore
@@ -57,7 +58,8 @@ export const router = createRouter({
         {path: 'loading', component: LoadingDemo},
         {path: 'checkbox', component: CheckBoxDemo},
         {path: 'carousel', component: CarouselDemo},
-        {path: 'backTop', component: BackTopDemo}
+        {path: 'backTop', component: BackTopDemo},
+        {path: 'select', component: SelectDemo}
       ],
     },
   ],
