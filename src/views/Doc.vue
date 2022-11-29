@@ -207,6 +207,11 @@ aside {
           display: block;
           text-decoration: none;
           border-radius: 8px;
+          color: #606266;
+          font-weight: 500;
+          transition: color 0.3s;
+          font-family: "PingFang SC", sans-serif;
+          font-size: 0.9rem;
 
           &:hover {
             color: #1890ff
@@ -226,8 +231,9 @@ aside {
           }
 
           &.router-link-active {
-            color: #1890ff;
+            color: #409eff;
             background-color: rgba(64, 158, 255, 0.1);
+            font-weight: 600;
           }
 
           //&.router-link-active:after {
