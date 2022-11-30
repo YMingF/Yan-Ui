@@ -94,7 +94,7 @@ $grey: grey;
     }
   }
 
-  &.z-size-big {
+  &.z-size-large {
     font-size: 24px;
     height: 48px;
     padding: 0 16px

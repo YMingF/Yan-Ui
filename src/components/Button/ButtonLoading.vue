@@ -1,5 +1,5 @@
 <demo>
-loading
+加载状态按钮
 </demo>
 <template>
   <div>

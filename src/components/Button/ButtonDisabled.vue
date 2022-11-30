@@ -1,5 +1,5 @@
 <demo>
-按钮置灰
+禁用状态
 </demo>
 <template>
   <div>
