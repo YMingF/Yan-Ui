@@ -46,6 +46,9 @@
                   <router-link to="/doc/input">Input 输入框</router-link>
                 </li>
                 <li>
+                  <router-link to="/doc/inputNumber">InputNumber 数字输入框</router-link>
+                </li>
+                <li>
                   <router-link to="/doc/switch">Switch 开关</router-link>
                 </li>
               </ol>
@@ -104,8 +107,8 @@
             </div>
           </aside>
         </div>
-        <main>
-          <router-view />
+        <main class="doc-content">
+          <router-view/>
         </main>
       </div>
     </div>
@@ -137,7 +140,7 @@
   > .content {
     flex-grow: 1;
     padding-top: 60px;
-    padding-left: 300px;
+    padding-left: 350px;
     @media (max-width: 500px) {
       padding-left: 0;
     }
@@ -151,9 +154,9 @@
     flex-shrink: 0;
   }
 
-  > main {
+  .doc-content {
     flex-grow: 1;
-    padding: 16px;
+    padding: 64px 64px 16px 16px;
   }
 }
 
@@ -161,15 +164,16 @@
 aside {
   background: #fff;
   position: fixed;
-  width: 300px;
+  width: 350px;
   top: 0;
   left: 0;
   height: 100%;
   z-index: 1;
   margin-top: 70px;
-  padding: 0 48px 90px 48px;
+  padding: 48px 48px 90px 48px;
   overflow-y: scroll;
   overscroll-behavior: contain;
+
   &::-webkit-scrollbar {
     width: 12px;
     background-color: #fff;
