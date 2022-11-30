@@ -1,14 +1,16 @@
 <template>
+  <!--    vite.config.ts里有写__sourceCodeTitle的定义，就是你在组件里些的demo标签里的内容-->
+  <h1 class="demoHeader">{{ component.__sourceCodeTitle }} </h1>
+  <!--    描述-->
+  <div>
+    <component :is="descComponent"></component>
+  </div>
   <div class="demo">
-    <!--    vite.config.ts里有写__sourceCodeTitle的定义，就是你在组件里些的demo标签里的内容-->
-    <h2>{{ component.__sourceCodeTitle }} </h2>
+    <!--     当前组件展示主要效果-->
     <div class="demo-component">
       <component :is="component"></component>
     </div>
-    <!--    描述-->
-    <div>
-      <component :is="descComponent"></component>
-    </div>
+    <!--     点击按钮-->
     <div class="demo-actions">
 
       <z-popover position="bottom" :trigger="'hover'">
@@ -33,78 +35,72 @@
       </z-popover>
 
     </div>
-    <div v-if="codeVisible" class="demo-code">
+    <div v-show="codeVisible" class="demo-code">
         <pre class="language-html"
              v-html="html"></pre>
     </div>
   </div>
 </template>
 
-<script lang='ts'>
-import Button from '../../lib/Button.vue';
+<script lang='ts' setup>
 import 'prismjs';
-import {computed, ref} from 'vue';
+import { computed, ref } from 'vue';
 import Notify from '../../lib/Notification/notify';
 // 适应这个库的写法
 const Prism = (window as any).Prism;
-export default {
-  props: {
-    component: Object,
-    descComponent: Object
-  },
-  components: {
-    Button,
-  },
-  setup(props) {
-    const html = computed(() => {
-      return Prism.highlight((props.component as any).__sourceCode, Prism.languages.javascript, 'javascript');
-    });
-    const codeVisible = ref(false);
+const props = defineProps({
+  component: Object,
+  descComponent: Object
+});
 
-    function copyCode() {
-      let textarea = document.createElement('textarea');
-      document.body.appendChild(textarea);
-      // 隐藏此输入框
-      textarea.style.position = 'fixed';
-      textarea.style.clip = 'rect(0 0 0 0)';
-      textarea.style.top = '10px';
-      // 赋值
-      textarea.value = (props.component as any).__sourceCode;
-      // 选中
-      textarea.select();
-      // 复制
-      document.execCommand('copy', true);
-      // 移除输入框
-      document.body.removeChild(textarea);
-      Notify({
-        message: '复制成功',
-        type: 'success',
-        duration: 2000
-      });
-    }
+const html = computed(() => {
+  return Prism.highlight((props.component as any).__sourceCode, Prism.languages.javascript, 'javascript');
+});
+const codeVisible = ref(false);
 
-    return {Prism, html, codeVisible, copyCode};
-  },
-};
+function copyCode() {
+  let textarea = document.createElement('textarea');
+  document.body.appendChild(textarea);
+  // 隐藏此输入框
+  textarea.style.position = 'fixed';
+  textarea.style.clip = 'rect(0 0 0 0)';
+  textarea.style.top = '10px';
+  // 赋值
+  textarea.value = (props.component as any).__sourceCode;
+  // 选中
+  textarea.select();
+  // 复制
+  document.execCommand('copy', true);
+  // 移除输入框
+  document.body.removeChild(textarea);
+  Notify({
+    message: '复制成功',
+    type: 'success',
+    duration: 2000
+  });
+}
+
 </script>
 
 <style lang="scss" scoped>
 $border-color: #d9d9d9;
+.demoHeader {
+  font-size: 2rem;
+  color: #606266;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+
 .demo {
   border: 1px solid $border-color;
   margin: 16px 0 32px;
 
-  > h2 {
-    font-size: 20px;
-    padding: 8px 16px;
-    border-bottom: 1px solid $border-color;
-  }
 
-  &-component {
+  .demo-component {
     padding: 42px 24px 50px;
   }
 
-  &-actions {
+  .demo-actions {
     padding: 8px 40px;
     border-top: 1px dashed $border-color;
     display: flex;
@@ -130,7 +126,7 @@ $border-color: #d9d9d9;
 
   }
 
-  &-code {
+  .demo-code {
     padding: 8px 16px;
     border-top: 1px dashed $border-color;
 
