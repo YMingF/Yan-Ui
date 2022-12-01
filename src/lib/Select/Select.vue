@@ -81,10 +81,6 @@ function usePopover() {
     if (popoverVisible.value) {
       nextTick(() => {
         const gap = document.documentElement.clientHeight - popoverBoxRef.value.getBoundingClientRect().y - popoverBoxRef.value.getBoundingClientRect().height;
-        console.log(popoverBoxRef.value.getBoundingClientRect());
-        console.log(popoverBoxRef.value.getBoundingClientRect().y);
-        console.log(popoverBoxRef.value.getBoundingClientRect().height);
-        console.log(gap);
         if (gap < 10) {
           popoverPos.value = 'top';
         } else {

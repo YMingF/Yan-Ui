@@ -9,9 +9,6 @@ export default {
   props: {
     itemArray: {type: Array}
   },
-  mounted() {
-    console.log('子组件获取的值', this.itemArray)
-  }
 }
 </script>
 
