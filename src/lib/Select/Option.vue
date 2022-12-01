@@ -21,15 +21,16 @@ const itemSelectedClass = computed(() => {
 });
 const {
   boxRef,
-  popoverVisible,
-  selectedItemVal
-} = inject('selectContainerVal') as { boxRef: Ref<HTMLElement>, popoverVisible: Ref };
+  setPopoverVisible,
+  selectedItemVal,
+  updateSelectedItem
+} = inject('selectContainerVal') as { boxRef: Ref<HTMLElement>, setPopoverVisible: Function };
 let top = ref();
 
 function itemSelect() {
   if (props.disabled) return;
-  popoverVisible.value = false;
-  selectedItemVal.value = props.value;
+  setPopoverVisible(false);
+  updateSelectedItem(props.value);
 }
 </script>
 

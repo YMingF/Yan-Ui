@@ -67,6 +67,10 @@ function selectBoxClicked() {
   changePopoverPos();
 }
 
+function updateSelectedItem(val) {
+  selectedItemVal.value = val;
+}
+
 function usePopover() {
   const popoverVisible = ref(false);
   const popoverPos = ref('bottom');
@@ -80,6 +84,7 @@ function usePopover() {
   function changePopoverPos() {
     if (popoverVisible.value) {
       nextTick(() => {
+        // 获取元素距离可视窗下界面的距离
         const gap = document.documentElement.clientHeight - popoverBoxRef.value.getBoundingClientRect().y - popoverBoxRef.value.getBoundingClientRect().height;
         if (gap < 10) {
           popoverPos.value = 'top';
@@ -91,6 +96,10 @@ function usePopover() {
     }
   }
 
+  function setPopoverVisible(val) {
+    popoverVisible.value = val;
+  }
+
   function resetPopoverPos() {
     if (!popoverVisible.value) {
       popoverPos.value = undefined;
@@ -98,11 +107,24 @@ function usePopover() {
   }
 
   return {
-    popoverVisible, changePopoverPos, popoverPos, popoverBoxRef, popoverComputedClass, resetPopoverPos
+    popoverVisible,
+    changePopoverPos,
+    popoverPos,
+    popoverBoxRef,
+    popoverComputedClass,
+    resetPopoverPos,
+    setPopoverVisible
   };
 }
 
-const {changePopoverPos, popoverVisible, popoverBoxRef, popoverComputedClass, resetPopoverPos} = usePopover();
+const {
+  changePopoverPos,
+  popoverVisible,
+  popoverBoxRef,
+  popoverComputedClass,
+  resetPopoverPos,
+  setPopoverVisible
+} = usePopover();
 
 function handleClose() {
   isFocus.value = false;
@@ -118,11 +140,13 @@ function resetVal() {
 
 watch(() => selectedItemVal.value, () => {
   emits('update:modelValue', selectedItemVal.value);
+  resetPopoverPos();
 });
 const boxRef = ref<HTMLElement>();
 provide('selectContainerVal', {
   boxRef,
-  popoverVisible,
+  setPopoverVisible,
+  updateSelectedItem,
   selectedItemVal
 });
 </script>
