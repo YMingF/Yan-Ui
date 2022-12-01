@@ -2,7 +2,7 @@
   <div class="topNav">
     <router-link to="/" class="logo">
       <svg class="icon">
-        <use xlink:href="#icon-home"></use>
+        <use xlink:href="#icon-NavZ"></use>
       </svg>
     </router-link>
 
@@ -63,8 +63,8 @@ $wordColor: #007974;
   background: #fff;
 
   > .logo {
-    max-width: 6em;
     margin-right: auto;
+    padding-left: 24px;
 
     > svg {
       width: 32px;
