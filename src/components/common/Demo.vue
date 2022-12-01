@@ -84,12 +84,7 @@ function copyCode() {
 
 <style lang="scss" scoped>
 $border-color: #d9d9d9;
-.demoHeader {
-  font-size: 2rem;
-  color: #606266;
-  font-weight: 600;
-  margin-bottom: 1.25rem;
-}
+
 
 .demo {
   border: 1px solid $border-color;

@@ -103,9 +103,21 @@ code {
   border-radius: 3px;
 }
 
-.z-loading-relative{
+.z-loading-relative {
   position: relative;
 }
-.mt-4{
+
+.mt-4 {
   margin-top: 1rem;
+}
+
+.demoHeader {
+  font-size: 2rem;
+  color: #606266;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+
+.m-2 {
+  margin: 0.5rem;
 }

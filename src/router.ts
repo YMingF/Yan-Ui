@@ -17,8 +17,8 @@ import LoadingDemo from './views/Loading/LoadingDemo.vue';
 import CheckBoxDemo from './views/CheckBox/CheckBoxDemo.vue';
 import CarouselDemo from './views/Carousel/CarouselDemo.vue';
 import BackTopDemo from './views/Backtop/BackTopDemo.vue';
-import SelectDemo from './views/Select/SelectDemo.vue';
 import InputNumber from './views/InputNumber/InputNumberDemo.vue';
+import SelectDemo from './views/Select/SelectDemo.vue';
 import {h} from 'vue';
 import Markdown from './components/common/Markdown.vue';
 // @ts-ignore
@@ -61,7 +61,8 @@ export const router = createRouter({
         {path: 'carousel', component: CarouselDemo},
         {path: 'backTop', component: BackTopDemo},
         {path: 'select', component: SelectDemo},
-        {path: 'inputNumber', component: InputNumber}
+        {path: 'inputNumber', component: InputNumber},
+        {path: 'select', component: SelectDemo}
       ],
     },
   ],

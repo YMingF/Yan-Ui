@@ -20,6 +20,8 @@ import Carousel from '../lib/Carousel/Carousel.vue';
 import CarouselItem from '../lib/Carousel/CarouselItem.vue';
 import BackTop from '../lib/BackTop/BackTop.vue';
 import ZInputNumber from '../lib/InputNumber/InputNumber.vue';
+import ZSelect from '../lib/Select/Select.vue';
+import ZOption from '../lib/Select/Option.vue';
 import Demo from './common/Demo.vue';
 import ApiTable from './common/ApiTableContainer.vue';
 import ComponentDesc from './common/ComponentDesc.vue';
@@ -45,6 +47,8 @@ const components: { [propName: string]: Component } = {
     ZCarousel: Carousel,
     ZCarouselItem: CarouselItem,
     ZBackTop: BackTop,
+    ZSelect,
+    ZOption,
     ZInputNumber,
     Demo,
     ApiTable,

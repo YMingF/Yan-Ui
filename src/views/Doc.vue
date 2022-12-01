@@ -51,6 +51,9 @@
                 <li>
                   <router-link to="/doc/switch">Switch 开关</router-link>
                 </li>
+                <li>
+                  <router-link to="/doc/select">Select 选择器</router-link>
+                </li>
               </ol>
             </section>
             <section class="sidebar-group">
