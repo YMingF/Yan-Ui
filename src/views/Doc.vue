@@ -68,6 +68,9 @@
                 <li>
                   <router-link to="/doc/collapse">Collapse 折叠面板</router-link>
                 </li>
+                <li>
+                  <router-link to="/doc/tag">Tag 标签</router-link>
+                </li>
               </ol>
             </section>
             <section class="sidebar-group">
@@ -181,7 +184,7 @@ aside {
   overscroll-behavior: contain;
 
   &::-webkit-scrollbar {
-    width: 12px;
+    width: 4px;
     background-color: #fff;
     display: none;
   }

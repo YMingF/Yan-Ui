@@ -27,6 +27,7 @@ import ZAside from '../lib/Container/Aside.vue';
 import ZHeader from '../lib/Container/Header.vue';
 import ZMain from '../lib/Container/Main.vue';
 import ZFooter from '../lib/Container/Footer.vue';
+import ZTag from '../lib/Tag/Tag.vue';
 import Demo from './common/Demo.vue';
 import ApiTable from './common/ApiTableContainer.vue';
 import ComponentDesc from './common/ComponentDesc.vue';
@@ -62,7 +63,8 @@ const components: { [propName: string]: Component } = {
     ZAside,
     ZHeader,
     ZMain,
-    ZFooter
+    ZFooter,
+    ZTag
 };
 export default {
     install: (Vue: App) => {

@@ -20,6 +20,7 @@ import BackTopDemo from './views/Backtop/BackTopDemo.vue';
 import InputNumber from './views/InputNumber/InputNumberDemo.vue';
 import SelectDemo from './views/Select/SelectDemo.vue';
 import ContainerDemo from './views/Container/ContainerDemo.vue';
+import TagDemo from './views/Tag/TagDemo.vue';
 import {h} from 'vue';
 import Markdown from './components/common/Markdown.vue';
 // @ts-ignore
@@ -65,6 +66,7 @@ export const router = createRouter({
         {path: 'inputNumber', component: InputNumber},
         {path: 'select', component: SelectDemo},
         {path: 'container', component: ContainerDemo},
+        {path: 'tag', component: TagDemo},
       ],
     },
   ],
