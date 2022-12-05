@@ -121,3 +121,37 @@ code {
 .m-2 {
   margin: 0.5rem;
 }
+.common-layout {
+  .z-aside {
+    background-color: #d9ecff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .z-main {
+    background-color: #ecf5ff;
+    color: #303133;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .z-header {
+    background-color: #c6e2ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .z-footer {
+    background-color: #c6e2ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+  }
+}
+

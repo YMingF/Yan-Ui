@@ -22,6 +22,11 @@ import BackTop from '../lib/BackTop/BackTop.vue';
 import ZInputNumber from '../lib/InputNumber/InputNumber.vue';
 import ZSelect from '../lib/Select/Select.vue';
 import ZOption from '../lib/Select/Option.vue';
+import ZContainer from '../lib/Container/Container.vue';
+import ZAside from '../lib/Container/Aside.vue';
+import ZHeader from '../lib/Container/Header.vue';
+import ZMain from '../lib/Container/Main.vue';
+import ZFooter from '../lib/Container/Footer.vue';
 import Demo from './common/Demo.vue';
 import ApiTable from './common/ApiTableContainer.vue';
 import ComponentDesc from './common/ComponentDesc.vue';
@@ -52,7 +57,12 @@ const components: { [propName: string]: Component } = {
     ZInputNumber,
     Demo,
     ApiTable,
-    ComponentDesc
+    ComponentDesc,
+    ZContainer,
+    ZAside,
+    ZHeader,
+    ZMain,
+    ZFooter
 };
 export default {
     install: (Vue: App) => {

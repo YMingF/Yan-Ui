@@ -1,6 +1,6 @@
 <template>
   <!--    vite.config.ts里有写__sourceCodeTitle的定义，就是你在组件里些的demo标签里的内容-->
-  <h1 class="demoHeader">{{ component.__sourceCodeTitle }} </h1>
+  <h1 class="demoHeader" v-if="component.__sourceCodeTitle!=='\'\''">{{ component.__sourceCodeTitle }} </h1>
   <!--    描述-->
   <div>
     <component :is="descComponent"></component>

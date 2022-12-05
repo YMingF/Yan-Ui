@@ -25,6 +25,9 @@
                   <router-link to="/doc/button">Button 组件</router-link>
                 </li>
                 <li>
+                  <router-link to="/doc/container">Container 布局容器</router-link>
+                </li>
+                <li>
                   <router-link to="/doc/grid">Grid 栅格</router-link>
                 </li>
 
