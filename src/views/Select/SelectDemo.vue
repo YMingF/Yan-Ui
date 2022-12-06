@@ -7,6 +7,8 @@
   <Demo :component="Disable" :desc-component="DisableDesc"></Demo>
   <!--清空-->
   <Demo :component="Clearable" :desc-component="ClearableDesc"></Demo>
+  <!--  多选-->
+  <Demo :component="Multiple" :desc-component="MultipleDesc"></Demo>
   <!---->
   <api-table index-title="Select 属性" :head-title="titleArr" :body-data="tableContent"></api-table>
 
@@ -19,6 +21,8 @@ import Disable from '../../components/Select/Disable.vue';
 import DisableDesc from '../../components/Select/DisableDesc.vue';
 import Clearable from '../../components/Select/Clearable.vue';
 import ClearableDesc from '../../components/Select/ClearableDesc.vue';
+import Multiple from '../../components/Select/Multiple.vue';
+import MultipleDesc from '../../components/Select/MultipleDesc.vue';
 
 const titleArr = ['属性', '说明', '类型', '可选值', '默认值'];
 const tableContent = [
@@ -26,6 +30,6 @@ const tableContent = [
   [`disabled`, `是否禁用`, `<code>boolean</code>`, `<code>true/false</code>`, `<code>false</code>`],
   [`size`, `输入框尺寸`, `<code>string</code>`, `<code>large/small</code>`, `<code>--</code>`],
   [`clearable`, `是否可以清空选项`, `<code>boolean</code>`, `<code>true / false</code>`, `<code>false</code>`],
-  [`placeholder`, `占位文字`, `<code>string</code>`, `<code>--</code>`, `<code>Select</code>`],
+  [`placeholder`, `占位文字`, `<code>string</code>`, `<code>--</code>`, `<code>Select</code>`]
 ];
 </script>

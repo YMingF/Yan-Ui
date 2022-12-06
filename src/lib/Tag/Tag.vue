@@ -50,6 +50,7 @@ function handleClick(event: MouseEvent) {
   align-items: center;
   height: 24px;
   padding: 0 9px;
+  margin: 2px 6px 2px 0;
   font-size: 12px;
   border: 1px solid;
   border-radius: 4px;

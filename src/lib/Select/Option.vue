@@ -1,4 +1,3 @@
-// option.vue
 <template>
   <li :class="itemSelectedClass" class="z-select-dropdown-item" @click.stop="itemSelect">{{ label }}</li>
 </template>
@@ -15,27 +14,30 @@ const props = defineProps({
 });
 const itemSelectedClass = computed(() => {
   return {
-    'is-selected': selectedItemVal.value === props.value,
-    'is-disabled': props.disabled
+    'is-selected': multiple ? selectedArr.value.includes(props.value) : selectedItemVal.value === props.value,
+    'is-disabled': props.disabled,
+    'multiSelected': multiple && selectedArr.value.includes(props.value)
   };
 });
 const {
-  boxRef,
   setPopoverVisible,
   selectedItemVal,
-  updateSelectedItem
+  updateSelectedItem, multiple, selectedArr
 } = inject('selectContainerVal') as { boxRef: Ref<HTMLElement>, setPopoverVisible: Function };
 let top = ref();
 
 function itemSelect() {
   if (props.disabled) return;
-  setPopoverVisible(false);
+  setPopoverVisible(multiple);
   updateSelectedItem(props.value);
 }
 </script>
 
 <style lang='scss' scoped>
 .z-select-dropdown-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 0 32px 0 20px;
   background: #fff;
   font-size: 14px;
@@ -47,6 +49,24 @@ function itemSelect() {
   line-height: 34px;
   box-sizing: border-box;
   cursor: pointer;
+
+  &.multiSelected.is-selected {
+    background-color: #fff;
+
+  }
+
+  &.multiSelected::after {
+    content: "";
+    display: block;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 4px;
+    height: 10px;
+    border: 1px solid #6eb4fe;
+    transform: rotate(45deg);
+    border-top: none;
+    border-left: none;
+  }
 
   &.is-selected {
     background: #f5f7fa;

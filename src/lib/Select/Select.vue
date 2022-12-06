@@ -1,10 +1,16 @@
 <template>
   <div ref="selectRef" class="z-select" :class="selectSizeClass" v-click-outside="handleClose"
        @click.stop="selectBoxClicked">
+    <!--        标签tag-->
+    <div ref="selectedTagRef" class="z-selected-tags">
+      <z-tag closable v-for="item in selectedArr" :key="item" @close="updateSelectedItem(item)">{{ item }}</z-tag>
+    </div>
     <div class="z-input">
       <div class="z-input-wrapper" :class="{'is-focus':isFocus}">
-        <input class="z-input-inner" type="text" :value="modelValue" readonly autocomplete="off"
-               :placeholder="placeholder">
+
+        <!--        输入框-->
+        <input ref="selectInput" class="z-input-inner" type="text" :value="modelValue" readonly autocomplete="off"
+               :placeholder="modelValue?'':placeholder">
         <span class="z-input-suffix-box" :class="{'is-expand':popoverVisible}">
           <template v-if="showClearBtn">
            <svg @click.stop="resetVal">
@@ -20,7 +26,6 @@
       </div>
     </div>
     <!--  下拉弹窗  -->
-    <transition name="fade">
       <div ref="popoverBoxRef" class="z-select-popover" :class="popoverComputedClass" v-if="popoverVisible">
         <div class="contentBox">
           <div class="z-select-item-wrapper">
@@ -31,7 +36,6 @@
           <span class="z-select-dropdown-arrow"></span>
         </div>
       </div>
-    </transition>
   </div>
 </template>
 
@@ -42,13 +46,16 @@ const props = defineProps({
   modelValue: [String, Number],
   placeholder: {type: String, default: 'Select'},
   size: String,
-  clearable: {type: Boolean, default: false}
+  clearable: {type: Boolean, default: false},
+  multiple: {type: Boolean, default: false}
 });
 const emits = defineEmits(['update:modelValue']);
 const isFocus = ref(false);
 const selectedItemVal = ref(props.modelValue ?? '');
+const selectedArr = ref<Array<string | number>>([...props.modelValue] ?? []);
 const selectRef = ref<HTMLDivElement>();
-
+const selectedTagRef = ref<HTMLDivElement>();
+const selectInput = ref<HTMLElement>();
 const selectSizeClass = computed(() => {
   return {
     [`z-select-${props.size}`]: props.size
@@ -68,7 +75,23 @@ function selectBoxClicked() {
 }
 
 function updateSelectedItem(val) {
+  if (props.multiple) {
+    if (selectedArr.value.indexOf(val) !== -1) {
+      selectedArr.value = selectedArr.value.filter(item => item !== val);
+    } else {
+      selectedArr.value.push(val);
+    }
+    syncTagBoxHeight();
+    return;
+  }
   selectedItemVal.value = val;
+}
+
+function syncTagBoxHeight() {
+  nextTick(() => {
+    const tagsHeight = selectedTagRef.value.getBoundingClientRect().height;
+    selectInput.value.style.height = tagsHeight + 'px';
+  });
 }
 
 function usePopover() {
@@ -139,6 +162,7 @@ function resetVal() {
 }
 
 watch(() => selectedItemVal.value, () => {
+  debugger
   emits('update:modelValue', selectedItemVal.value);
   resetPopoverPos();
 });
@@ -147,7 +171,9 @@ provide('selectContainerVal', {
   boxRef,
   setPopoverVisible,
   updateSelectedItem,
-  selectedItemVal
+  selectedItemVal,
+  multiple: props.multiple,
+  selectedArr
 });
 </script>
 
@@ -161,9 +187,15 @@ $el-input-small-height: 24px;
   vertical-align: middle;
   line-height: $el-input-height;
 
+  .z-selected-tags {
+    position: absolute;
+    left: 6px;
+    cursor: pointer;
+    max-width: 208px;
+  }
+
   &.z-select-large {
     .z-input-wrapper {
-      height: $el-input-large-height;
       line-height: $el-input-large-height;
       font-size: 16px;
 
@@ -176,7 +208,6 @@ $el-input-small-height: 24px;
 
   &.z-select-small {
     .z-input-wrapper {
-      height: $el-input-small-height;
       line-height: $el-input-small-height;
       font-size: 12px;
 
@@ -198,7 +229,6 @@ $el-input-small-height: 24px;
     background-color: #fff;
     box-shadow: 0 0 0 1px #dcdfe6 inset;
     font-size: 14px;
-    height: $el-input-height;
     line-height: $el-input-height;
 
     &.is-focus {
@@ -219,6 +249,7 @@ $el-input-small-height: 24px;
       box-sizing: border-box;
       height: $el-input-height - 2px;
       line-height: $el-input-height - 2px;;
+      min-height: $el-input-height - 2px;
     }
 
     .z-input-suffix-box {
@@ -248,6 +279,12 @@ $el-input-small-height: 24px;
     border: 1px solid #e4e7ed;
     border-radius: 4px;
     z-index: 99;
+
+    .z-select-item {
+      display: inline-flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
     &.pos-bottom {
       top: calc(100% + 10px);
