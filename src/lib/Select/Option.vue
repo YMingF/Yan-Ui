@@ -1,10 +1,20 @@
 <template>
-  <li :class="itemSelectedClass" class="z-select-dropdown-item" @click.stop="itemSelect">{{ label }}</li>
+  <li :class="itemSelectedClass" class="z-select-dropdown-item" @click.stop="itemSelect">
+    <!--    有插槽就展示用户自定义的模板内容-->
+    <template v-if="slots">
+      <slot></slot>
+    </template>
+    <!--    插槽没传内容就默认显示传过来的标签-->
+    <template v-else>
+      {{ label }}
+    </template>
+  </li>
 </template>
 
 <script lang='ts' setup>
-import {computed, inject, Ref, ref} from 'vue';
+import {computed, inject, Ref, useSlots} from 'vue';
 
+const slots = useSlots().default?.();
 const props = defineProps({
   label: String,
   value: [String, Number],
@@ -24,7 +34,6 @@ const {
   selectedItemVal,
   updateSelectedItem, multiple, selectedArr
 } = inject('selectContainerVal') as { boxRef: Ref<HTMLElement>, setPopoverVisible: Function };
-let top = ref();
 
 function itemSelect() {
   if (props.disabled) return;

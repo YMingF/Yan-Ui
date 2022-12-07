@@ -3,7 +3,7 @@
        @click.stop="selectBoxClicked">
     <!--        标签tag-->
     <div ref="selectedTagRef" class="z-selected-tags">
-      <z-tag closable v-for="item in selectedArr" :key="item" @close="updateSelectedItem(item)">{{ item }}</z-tag>
+      <z-tag closable v-for="item in selectedArr" type="info" :key="item" @close="updateSelectedItem(item)">{{ item }}</z-tag>
     </div>
     <div class="z-input">
       <div class="z-input-wrapper" :class="{'is-focus':isFocus}">
@@ -162,7 +162,6 @@ function resetVal() {
 }
 
 watch(() => selectedItemVal.value, () => {
-  debugger
   emits('update:modelValue', selectedItemVal.value);
   resetPopoverPos();
 });
